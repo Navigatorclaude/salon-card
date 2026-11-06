@@ -209,6 +209,14 @@ body.kit main{padding:0;max-width:none}
 .k-sheet th{background:#1d2333;color:#fff;font-weight:700;height:9mm}
 .k-sheet td.n{text-align:center;color:#888;width:9mm}
 .k-sheet td.c{text-align:center;color:#c7cbd4;font-size:13pt;width:16mm}
+.k-tag .nm{font-size:15pt;font-weight:900;color:#1d2333;margin-top:2.2mm;flex:1.6;display:flex;align-items:flex-end;border-bottom:.35mm solid #c7cbd4;line-height:1.1;padding-bottom:1mm}
+.k-sheet.ro th,.k-sheet.ro td{height:8.3mm;font-size:9.5pt}
+.k-sheet.ro tr.pend td{background:#fff4d6}
+.k-sheet.ro td.nk{font-size:8pt;color:#6b7080}
+.k-sheet.ro td.bt{text-align:center;font-weight:900;font-size:13pt}
+.k-sheet.ro td.py{font-size:8.5pt}
+.k-sheet.ro td.nt{font-size:7.5pt;color:#6b7080;line-height:1.25}
+.k-sheet.ro .rl{font-size:7.5pt;color:#fff;background:#1d2333;border-radius:2mm;padding:0 1.5mm;margin-left:1.5mm}
 .k-tent{position:absolute;inset:0}
 .k-tent .half{position:absolute;left:12mm;right:12mm;height:93mm;display:flex;flex-direction:column;justify-content:center;padding:0 10mm}
 .k-tent .half.top{top:6mm;transform:rotate(180deg)}
@@ -713,6 +721,8 @@ function load() {
   try { s = JSON.parse(localStorage.getItem(KEY) || 'null'); } catch (e) {}
   s = Object.assign(JSON.parse(JSON.stringify(DEF)), s || {});
   s.names = Object.assign({}, DEF.names, s.names); s.batches = Object.assign({}, DEF.batches, s.batches);
+  // 本机打印时注入的嘉宾信息（不进 App、不上网），只补空着的项
+  if (window.LOCAL_INFO) Object.keys(LOCAL_INFO).forEach(k => { if (!(s.info[k] || '').trim()) s.info[k] = LOCAL_INFO[k]; });
   return s;
 }
 let saveT = 0;
@@ -1426,11 +1436,18 @@ function kitDoc() {
   add('l', 'tent', '<div class="k-tent"><div class="half top">' + tent + '</div><div class="fold"><span>沿虚线对折，立在话筒旁</span></div><div class="half bot">' + tent + '</div></div>');
 
   // 4) 名牌：每批一种颜色，一页 10 张（9 × 5.4 cm，名片卡套尺寸）
+  const RO = window.ROSTER, PEOPLE = RO ? RO.people : [];
+  const tag = (n, c, nm, roleTxt) => { const seg = n ? SEG.find(x => x.id === 'batch' + n) : null;
+    return '<div class="k-tag" style="--c:' + c + '"><div class="tb"><b>' + (n ? BATCH_LABEL[n] : roleTxt ? '★' : '＿') + '</b><span>' + (n ? '第' + BATCH_LABEL[n] + '批' : roleTxt ? E(roleTxt) : '第＿批') + '</span></div><div class="body"><div class="ev"><span>' + E(EVENT.title) + '</span><span>11.7 深圳</span></div>' +
+      '<div class="egg">' + (n ? '本批彩蛋「' + E(ICE[n].name) + '」· ' + seg.t0 + ' 自介' : roleTxt ? '今天的' + E(roleTxt) : '彩蛋看签到台海报') + '</div>' +
+      (nm ? '<div class="nm">' + E(nm) + '</div>' : '<div class="ln name">称呼</div>') + '<div class="ln">方向</div><div class="ln">想聊的话题</div></div></div>'; };
   [1, 2, 3, 4, 5, 0].forEach(n => {
-    const c = BATCH_COLOR[n], seg = n ? SEG.find(x => x.id === 'batch' + n) : null;
-    const one = '<div class="k-tag" style="--c:' + c + '"><div class="tb"><b>' + (n ? BATCH_LABEL[n] : '＿') + '</b><span>' + (n ? '第' + BATCH_LABEL[n] + '批' : '第＿批') + '</span></div><div class="body"><div class="ev"><span>' + E(EVENT.title) + '</span><span>11.7 深圳</span></div>' +
-      '<div class="egg">' + (n ? '本批彩蛋「' + E(ICE[n].name) + '」· ' + seg.t0 + ' 自介' : '彩蛋看签到台海报') + '</div><div class="ln name">称呼</div><div class="ln">方向</div><div class="ln">想聊的话题</div></div></div>';
-    add('p', 'tags', '<div style="position:absolute;top:5mm;left:15mm;right:15mm;display:flex;justify-content:space-between;font-size:9pt;color:#6b7080"><b style="color:' + c + '">' + (n ? '第' + BATCH_LABEL[n] + '批名牌 × 10' : '空白备用名牌 × 10（临时加入的人，批次手写）') + '</b><span>沿虚线剪开 · 9 × 5.4 cm，正好放进名片卡套，没有就用胶带贴</span></div><div class="k-tags">' + one.repeat(10) + '</div>');
+    const c = BATCH_COLOR[n];
+    let tags, title;
+    if (RO && n) { const ps = PEOPLE.filter(p => p.batch === n); tags = ps.map(p => tag(n, c, p.name)).join('') + tag(n, c).repeat(10 - ps.length); title = '第' + BATCH_LABEL[n] + '批名牌 · ' + ps.length + ' 人已印名字' + (ps.length < 10 ? ' + ' + (10 - ps.length) + ' 张空白' : ''); }
+    else if (RO && !n) { const st = PEOPLE.filter(p => !p.batch); tags = st.map(p => tag(0, '#1d2333', p.name, /嘉宾/.test(p.role) ? '嘉宾' : '志愿者')).join('') + tag(0, c).repeat(10 - st.length); title = '嘉宾 / 志愿者 ' + st.length + ' 张 + 空白 ' + (10 - st.length) + ' 张（临时加入的人用）'; }
+    else { tags = tag(n, c).repeat(10); title = n ? '第' + BATCH_LABEL[n] + '批名牌 × 10' : '空白备用名牌 × 10（临时加入的人，批次手写）'; }
+    add('p', 'tags', '<div style="position:absolute;top:5mm;left:15mm;right:15mm;display:flex;justify-content:space-between;font-size:9pt;color:#6b7080"><b style="color:' + (n ? c : '#1d2333') + '">' + title + '</b><span>沿虚线剪开 · 9 × 5.4 cm，正好放进名片卡套，没有就用胶带贴</span></div><div class="k-tags">' + tags + '</div>');
   });
 
   // 5) 提示牌
@@ -1443,7 +1460,15 @@ function kitDoc() {
     add('l', 'way', '<div class="k-way"><div class="ev">' + E(EVENT.title) + '</div><div class="big"' + (w[0] === '→' ? ' style="font-size:230pt;line-height:.9"' : '') + '>' + E(w[0]) + '</div><div class="sub">' + E(w[1]) + '</div></div>'));
 
   // 7) 签到表（打勾要手写）
-  [0, 1].forEach(pg => add('p', 'sheet', '<div class="k-head"><div style="display:flex;justify-content:space-between;align-items:baseline"><div class="k-h1" style="font-size:18pt">签到表 · ' + E(EVENT.title) + '</div><span class="k-sub">11/7 · 第 ' + (pg + 1) + ' / 2 页</span></div>' +
+  if (RO) {
+    const per = 24, pages = Math.ceil(PEOPLE.length / per), st = RO.stats;
+    for (let pg = 0; pg < pages; pg++) add('p', 'sheet', '<div class="k-head" style="padding-top:11mm"><div style="display:flex;justify-content:space-between;align-items:baseline"><div class="k-h1" style="font-size:17pt">签到表 · ' + E(EVENT.title) + '</div><span class="k-sub">11/7 · 第 ' + (pg + 1) + ' / ' + pages + ' 页</span></div>' +
+      '<div class="k-sub">共 ' + st.total + ' 人：已付款 ' + st.paid + ' · 免票 ' + st.free + ' · <b style="color:#b07800">付款待核 ' + st.pending + '（黄底，交雨哥确认）</b>　|　批次已排好，按颜色发名牌</div>' +
+      '<table class="k-sheet ro"><tr><th style="width:13mm">编号</th><th>称呼</th><th style="width:30mm">微信昵称</th><th style="width:13mm">批次</th><th style="width:17mm">付款</th><th style="width:11mm">签到</th><th style="width:11mm">名牌</th><th style="width:11mm">晚餐</th><th style="width:38mm">备注</th></tr>' +
+      PEOPLE.slice(pg * per, pg * per + per).map(p => '<tr' + (p.pay === '付款待核' ? ' class="pend"' : '') + '><td class="n">' + E(p.id) + '</td><td><b>' + E(p.name) + '</b>' + (p.batch ? '' : '<span class="rl">' + E(p.role) + '</span>') + '</td><td class="nk">' + E(p.nick) + '</td><td class="bt"' + (p.batch ? ' style="color:' + BATCH_COLOR[p.batch] + '"' : '') + '>' + (p.batch ? BATCH_LABEL[p.batch] : '—') + '</td><td class="py">' + E(p.pay) + '</td><td class="c">☐</td><td class="c">☐</td><td class="c">☐</td><td class="nt">' + E(p.note) + '</td></tr>').join('') +
+      (pg === pages - 1 ? Array.from({ length: Math.min(3, per * pages - PEOPLE.length + 3) }, () => '<tr><td class="n">新</td><td></td><td></td><td></td><td></td><td class="c">☐</td><td class="c">☐</td><td class="c">☐</td><td></td></tr>').join('') : '') +
+      '</table><div style="margin-top:3mm;font-size:10.5pt">本页合计：签到 ＿＿＿ 人 · 晚餐 ＿＿＿ 人</div></div>');
+  } else [0, 1].forEach(pg => add('p', 'sheet', '<div class="k-head"><div style="display:flex;justify-content:space-between;align-items:baseline"><div class="k-h1" style="font-size:18pt">签到表 · ' + E(EVENT.title) + '</div><span class="k-sub">11/7 · 第 ' + (pg + 1) + ' / 2 页</span></div>' +
     '<div class="k-sub">批次写 ①–⑤，其余打 ✓ · 报名 / 付款对不上的写在备注，交雨哥</div><table class="k-sheet"><tr><th style="width:9mm">#</th><th>称呼</th><th style="width:14mm">批次</th><th style="width:16mm">名牌</th><th style="width:16mm">晚餐</th><th style="width:20mm">报名/付款</th><th style="width:34mm">备注</th></tr>' +
     Array.from({ length: 25 }, (_, i) => '<tr><td class="n">' + (pg * 25 + i + 1) + '</td><td></td><td></td><td class="c">☐</td><td class="c">☐</td><td class="c">☐</td><td></td></tr>').join('') +
     '</table><div style="margin-top:3mm;font-size:10.5pt">本页合计：签到 ＿＿＿ 人 · 晚餐 ＿＿＿ 人</div></div>'));
@@ -1469,10 +1494,10 @@ function kitDoc() {
     ['region', '出海地图区域牌（6 张）', '各 1 份', '13:00 开场站队，布场时按方位贴墙'],
     ['poster', '自介玩法海报', '2 份', '签到台一张、话筒位一张'],
     ['tent', '一分钟自介台卡', '1 份', '沿虚线对折，立在话筒旁'],
-    ['tags', '名牌：①–⑤ 批各一种颜色 + 1 页空白', '各 1 份（共 60 张）', '剪开后按批次分好；签到时按批次发。人数超过 50 就多印空白页'],
+    ['tags', RO ? '名牌：①–⑤ 批各一种颜色，名字已印好 + 嘉宾 / 志愿者 / 空白 1 页' : '名牌：①–⑤ 批各一种颜色 + 1 页空白', '各 1 份（共 60 张）', RO ? '剪开后按批次分好；签到时按颜色发，本人只写方向和想聊的话题' : '剪开后按批次分好；签到时按批次发。人数超过 50 就多印空白页'],
     ['signs', '提示牌（8 张）', '各 1 份', '举给讲者看：3 分钟 / 2 分钟 / 5 秒 / 时间到 / 回座等（手机提示牌的纸质备份）'],
     ['way', '指路牌（签到处 / 茶点区 / 合影区 / 晚餐集合点 / 箭头）', '各 1 份，箭头 2 份', '箭头那张可以转着贴，指向会场'],
-    ['sheet', '签到表（50 行）', '1 份', '签到台用：批次、名牌、晚餐、付款打勾'],
+    ['sheet', RO ? '签到表（' + PEOPLE.length + ' 人名单已印好）' : '签到表（50 行）', '1 份', RO ? '签到台用：名字、批次、付款状态都印好了，只打勾；付款待核的标黄' : '签到台用：批次、名牌、晚餐、付款打勾'],
     ['pocket', '主持口袋卡（剪成 4 张）', '1 份', '手机没电时的备份'],
     ['bingo', '人脉宾果卡（一页两张）', '25 份（可选）', '雨哥同意再印；签到时发'],
   ];
@@ -1480,9 +1505,9 @@ function kitDoc() {
   const cover = '<div class="k-head"><div class="k-h1">沙龙物料包 · 彩色打印版</div><div class="k-sub">' + E(EVENT.title) + ' · 2026 年 11 月 7 日 周六 · 深圳 · 共 ' + (pages.length + 1) + ' 页</div>' +
     '<div class="k-note"><b>打印设置：</b>A4 · <b>彩色</b> · 单面 · 缩放选<b>「实际大小 / 100%」</b>（不要选「适合页面」，否则名牌尺寸会变）。横版页面打印机会自动转向。<br><b>封面这页不用印。</b>需要剪的：名牌、主持口袋卡，沿虚线剪。</div>' +
     '<table class="k-tbl"><tr><th style="width:15mm">页码</th><th>物料</th><th style="width:30mm">印几份</th><th>用在哪</th></tr>' + META.map(m => '<tr><td><b>' + range(m[0]) + '</b></td><td><b>' + E(m[1]) + '</b></td><td>' + E(m[2]) + '</td><td>' + E(m[3]) + '</td></tr>').join('') + '</table>' +
-    '<div class="k-note" style="background:#e3f3ef"><b style="color:#11806f">只有这几处要手写：</b>名牌上本人写称呼 / 方向 / 想聊的话题；签到表打勾；宾果卡互相签名；口袋卡上 ' + E(S.names.B) + ' 和场地联系人的电话。</div>' +
+    '<div class="k-note" style="background:#e3f3ef"><b style="color:#11806f">只有这几处要手写：</b>' + (RO ? '名牌上本人写方向 / 想聊的话题（名字已印好）' : '名牌上本人写称呼 / 方向 / 想聊的话题') + '；签到表打勾；宾果卡互相签名；口袋卡上 ' + E(S.names.B) + ' 和场地联系人的电话。</div>' +
     '<div class="k-note" style="background:#f3efe5"><b style="color:#1d2333">还要带：</b>胶带（贴区域牌、指路牌、海报）、几支笔（大家写名牌）、名片卡套（可选，有的话名牌直接插进去）。打印属于新增采购，先跟雨哥说一声。</div>' +
-    '<div class="k-sub" style="margin-top:5mm">拿到参加者名单后，可以把名字和批次直接印在名牌和签到表上：把手卡 App「资料 → 同步」的同步码发给 Claude 即可。</div></div>';
+    (RO ? '<div class="k-note" style="background:#e7eefc"><b style="color:#2f5fd0">名单已印好：</b>' + RO.stats.total + ' 人（参加者 ' + PEOPLE.filter(p => p.batch).length + ' 人分 5 批：' + RO.sizes.join(' / ') + '；嘉宾和志愿者 ' + PEOPLE.filter(p => !p.batch).length + ' 人不排自介）。手卡 App 的五批名单用「名单同步码.txt」导入，跟纸上一致。</div>' : '<div class="k-sub" style="margin-top:5mm">拿到参加者名单后，可以把名字和批次直接印在名牌和签到表上。</div>') + '</div>';
   $('#main').innerHTML = '<div class="kp">' + cover + '</div>' + pages.map(p => '<div class="' + (p.o === 'l' ? 'kl' : 'kp') + '">' + p.html + '</div>').join('');
 }
 
