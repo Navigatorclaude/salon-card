@@ -259,7 +259,7 @@ const EVENT = { date: '2026-11-07', title: '海外销售 Agent 沙龙', place: '
 const INFO = [
   { g: '嘉宾', k: 'yuBio', l: '雨哥介绍', area: 1, hint: '草稿参考（以雨哥确认版为准）：13 年海外销售实战，曾任普渡机器人亚太区负责人，团队从 5 人带到 50 人、年营收破亿，现在专注海外销售培训。' },
   { g: '嘉宾', k: 'g1name', l: '嘉宾一称呼', def: 'Jennifer', hint: '默认 Jennifer（嘉宾一就是主持人自己）' },
-  { g: '嘉宾', k: 'g1bio', l: '嘉宾一介绍', area: 1, def: '英语专业出身、港大文学硕士，做过美洲的海外销售——一个读文学的人，去卖过伺服电机', hint: 'Celine 介绍 Jennifer 时念的这句，可以改' },
+  { g: '嘉宾', k: 'g1bio', l: '嘉宾一介绍', area: 1, def: '英语专业出身、港大文学硕士，做过美洲的海外销售。今天她要分享的，是自己怎么用 AI 去学会一个完全陌生的领域', hint: 'Celine 介绍 Jennifer 时念的这句，可以改' },
   { g: '嘉宾', k: 'g1title', l: '嘉宾一题目', def: '每一次，都从零开始' },
   { g: '嘉宾', k: 'g2name', l: '嘉宾二称呼' },
   { g: '嘉宾', k: 'g2bio', l: '嘉宾二介绍', area: 1 },
@@ -491,11 +491,11 @@ const SEG = [
     [{ k: 'do', at: '14:25', cue: '帮 Jennifer 接投影', t: '14:25 帮 {A} 接投影、试翻页；接过计时手机（或用自己手机的 App 计时）。' }],
     'B'),
   {
-    id: 'guest1', t0: '14:35', t1: '14:55', kind: 'speaker', title: '嘉宾一分享 · {A}', who: '{A}', timerBy: 'B',
+    id: 'guest1', t0: '14:35', t1: '14:55', kind: 'speaker', title: '嘉宾一分享', who: '{A}', timerBy: 'B',
     timer: { mode: 'guest', min: 20, warn: 2 },
     A: [
-      { k: 'do', t: '轮到你分享：《{g1title}》。正文约 16.5 分钟，留 2–3 分钟问答。讲稿在「我的分享 / 讲稿与构思支点.pdf」。' },
-      { k: 'do', t: '翻页：→ / 空格 / 翻页笔；第 6、7、9、10、12 页要按到内容全出来再翻。' },
+      { k: 'do', t: '轮到你分享：《{g1title}》。正文约 17 分钟，留 2 分钟问答。讲稿框架在「我的分享 / 讲稿框架.docx」。' },
+      { k: 'do', t: '翻页：→ / 空格 / 翻页笔；第 4、6、7、8、10、11、13 页要按到内容全出来再翻。' },
       { k: 'do', at: '14:53', cue: '看 Celine 举牌：还剩 2 分钟', t: '14:53 看 {B} 举「还剩 2 分钟」牌，开始收尾进问答。' },
       { k: 'tip', t: '这 20 分钟由 {B} 主持：介绍你、计时、主持问答。你讲完把话筒交回给自己，接第②批自介。' },
     ],
@@ -601,7 +601,7 @@ const PREP = [
   { day: '周四 11/5 · 把信息拿齐', items: [
     ['A', 'a1', '向雨哥拿三位嘉宾的称呼、介绍、题目和顺序，填进「资料 → 信息」'],
     ['A', 'a2', '拿到雨哥介绍的确认版；确认雨哥 13:10–13:50 分享的资料怎么切换（用谁的电脑、谁翻页）'],
-    ['A', 'a3', '按名单排五批自介：核对重名、批次和顺序，每批最多 10 人（填进「资料 → 信息」的五批名单，App 会自动查重名和超员）'],
+    ['A', 'a3', '按名单排五批自介（40 多人 ≈ 每批 8–9 人）：把全部名单粘贴进「资料 → 信息 → 一键分批」，再核对重名、顺序，手动微调'],
     ['A', 'a4', '熟读主持稿，在要现场即兴的地方心里有数（雨哥 / 嘉宾收尾时「记一句」、交流时点出的共同话题）'],
     ['A', 'a5', '准备计时和提示牌：这个 App 的计时页 + 提示牌（还剩 3 分钟 / 还剩 2 分钟 / 还剩 5 秒 / 时间到 / 请回座）；想要纸牌就打印一套备用'],
     ['A', 'a6', '选一段回座音乐（30 秒内能认出来、不吵），存在手机里'],
@@ -617,7 +617,7 @@ const PREP = [
     ['AB', 'c2', '建一个两人的内部联络方式（微信两人小群），约好现场手势'],
   ] },
   { day: '周五 11/6 · 走通一次', items: [
-    ['A', 'a7', '和雨哥、{B} 过一遍流程（可用 App「资料 → 设置 → 演练模式」把时间拨到各个节点走一遍）'],
+    ['A', 'a7', '和雨哥、{B} 过一遍流程（App「现在」页点「开始」，一路点「下一环节」走一遍；试试加减时间、跳过、插入临时环节；走完到「设置」里重置进度）'],
     ['A', 'a8', '试一次一分钟自介提示（55 秒提示、60 秒接话）和回座召集'],
     ['A', 'a9', '跟每位嘉宾确认：自己几点开讲、20 分钟含问答、最后 2 分钟举牌；跟雨哥确认最后 3 分钟怎么提示'],
     ['A', 'a10', '把五批名单同步给 {B}（「资料 → 同步」发同步码），签到台上两人都能查谁在第几批'],
@@ -705,7 +705,8 @@ const SIGNS = [
 /* 沙龙电子手卡 · 界面逻辑（内容在 data.js） */
 const KEY = 'salon1107.v1';
 const DEF = { me: 'A', names: { A: 'Jennifer', B: 'Celine' }, info: {}, batches: { 1: '', 2: '', 3: '', 4: '', 5: '' }, dec: {}, checks: {},
-  fs: 1, theme: 'auto', sound: true, alertBoth: false, prepAll: false, tab: 'now', sub: 'prep', reh: null, T: null };
+  fs: 1, theme: 'auto', sound: true, alertBoth: false, prepAll: false, tab: 'now', sub: 'prep', reh: null, T: null,
+  mode: 'live', introSec: 60, lv: null };
 let S = load();
 function load() {
   let s = null;
@@ -770,6 +771,72 @@ SEG.forEach(s => ['A', 'B'].forEach(r => (s[r] || []).forEach(b => { if (b.at) C
 CUES.sort((a, b) => a.t - b.t || (a.who < b.who ? -1 : 1));
 const myCues = () => CUES.filter(c => c.who === S.me || S.alertBoth);
 
+/* ---------- 现场进度模式（默认）：不按时钟卡死，跟着现场点「下一环节」，后面的时间和提醒自动顺延 ---------- */
+const LIVE = () => S.mode !== 'clock';
+function LV() { if (!S.lv) S.lv = { cur: null, start: 0, adj: {}, skip: {}, extra: [], hist: {} }; return S.lv; }
+function realMin() { const d = new Date(); return d.getHours() * 60 + d.getMinutes() + d.getSeconds() / 60 + d.getMilliseconds() / 60000; }
+function planDur(s) { return s.extra ? s.min : toMin(s.t1) - toMin(s.t0); }
+function segDur(s) { return Math.max(1, planDur(s) + ((LV().adj || {})[s.id] || 0)); }
+function segList() {
+  if (!LIVE()) return SEG.slice();
+  const L = LV(), out = [];
+  SEG.forEach(s => { if (!L.skip[s.id]) out.push(s); L.extra.filter(x => x.after === s.id).forEach(x => out.push(x)); });
+  return out;
+}
+function fmtMin(m) { m = ((Math.floor(m) % 1440) + 1440) % 1440; return pad(Math.floor(m / 60)) + ':' + pad(m % 60); }
+// 排期：每段的开始/结束（分钟），当前是第几段
+function sched() {
+  if (!LIVE()) {
+    const nm = nowMin(), list = SEG.map(s => ({ s, a: toMin(s.t0), b: toMin(s.t1) }));
+    return { nm, list, cur: isLive() ? list.findIndex(e => e.a <= nm && nm < e.b) : -1, started: isLive() };
+  }
+  const L = LV(), nm = realMin(), segs = segList();
+  const ci = L.cur ? segs.findIndex(s => s.id === L.cur) : -1;
+  const list = []; let t = null;
+  segs.forEach((s, i) => {
+    if (ci < 0) { const a = s.extra ? t : toMin(s.t0); list.push({ s, a, b: a + segDur(s) }); t = a + segDur(s); return; }
+    if (i < ci) { const h = L.hist[s.id]; const a = h ? h.a : (s.t0 ? toMin(s.t0) : null), b = h ? h.b : (s.t1 ? toMin(s.t1) : a + segDur(s)); list.push({ s, a, b, done: true }); return; }
+    if (i === ci) { list.push({ s, a: L.start, b: L.start + segDur(s) }); t = L.start + segDur(s); return; }
+    list.push({ s, a: t, b: t + segDur(s) }); t += segDur(s);
+  });
+  return { nm, list, cur: ci, started: ci >= 0 };
+}
+// 某个提醒点在排期里的实际时间：靠近结尾的按结尾倒推，靠近开头的按开头顺推
+function cueAt(e, at) {
+  const s = e.s; if (s.extra || !s.t0) return e.a;
+  const o0 = toMin(at) - toMin(s.t0), o1 = toMin(s.t1) - toMin(at);
+  return o1 <= o0 ? e.b - o1 : e.a + o0;
+}
+function cuesNow(sc) {
+  const out = [], from = Math.max(0, sc.cur);
+  sc.list.slice(from).forEach(e => ['A', 'B'].forEach(r => (e.s[r] || []).forEach(b => {
+    if (b.at) { const t = cueAt(e, b.at); out.push({ t, at: fmtMin(t), who: r, text: b.cue || b.t, seg: e.s.id }); }
+  })));
+  return out.sort((x, y) => x.t - y.t).filter(c => c.who === S.me || S.alertBoth);
+}
+function lvGo(id, keepStart) {
+  const L = LV(), sc = sched(), nm = realMin();
+  if (L.cur && sc.cur >= 0) { const e = sc.list[sc.cur]; L.hist[L.cur] = { a: e.a, b: nm }; }
+  L.cur = id; L.start = keepStart != null ? keepStart : nm; save(1); lastNm = realMin(); render();
+}
+function lvNext() {
+  const sc = sched(); if (sc.cur < 0) return;
+  const nx = sc.list[sc.cur + 1];
+  if (!nx) { const L = LV(); L.hist[L.cur] = { a: sc.list[sc.cur].a, b: realMin() }; L.cur = null; L.done = true; save(1); render(); toast('今天的流程全部走完了，辛苦了 🎉', 4000); return; }
+  lvGo(nx.s.id); toast('▶ 进入：' + T_(nx.s.title), 2500);
+}
+function lvPrev() {
+  const L = LV(), sc = sched(); if (sc.cur <= 0) return;
+  const pv = sc.list[sc.cur - 1], h = L.hist[pv.s.id];
+  L.cur = pv.s.id; L.start = h ? h.a : realMin(); delete L.hist[pv.s.id]; save(1); render();
+}
+function lateText(sc) {
+  const close = sc.list.find(e => e.s.id === 'close'); if (!close || !sc.started) return '';
+  const d = Math.round(close.b - toMin('19:00'));
+  return '预计 ' + fmtMin(close.b) + ' 结束' + (d > 0 ? '（比计划<b style="color:var(--bad)">晚 ' + d + ' 分钟</b>）' : d < 0 ? '（比计划早 ' + (-d) + ' 分钟）' : '（准点）');
+}
+
+
 /* ---------- 提醒：振动 + 提示音 + 横幅 ---------- */
 let AC = null;
 function unlockAudio() { try { if (!AC) AC = new (window.AudioContext || window.webkitAudioContext)(); if (AC.state === 'suspended') AC.resume(); } catch (e) {} }
@@ -817,12 +884,12 @@ function T() {
 }
 function tCfg() {
   const t = T();
-  if (t.mode === 'intro') return { dur: 60, warn: 55, who: introCur() || '自介' };
-  if (t.mode === 'yu') return { dur: 2400, warn: 2400 - 180, who: '雨哥' };
-  if (t.mode === 'guest') return { dur: 1200, warn: 1200 - 120, who: (seg => seg && seg.who ? plain(seg.who) : '嘉宾')(guestSegNow()) };
+  if (t.mode === 'intro') { const d = S.introSec || 60; return { dur: d, warn: d - 5, who: introCur() || '自介' }; }
+  if (t.mode === 'yu') { const d = (LIVE() ? segDur(SEG.find(x => x.id === 'yu')) : 40) * 60; return { dur: d, warn: d - 180, who: '雨哥' }; }
+  if (t.mode === 'guest') { const g = guestSegNow(), d = (LIVE() && g ? segDur(g) : 20) * 60; return { dur: d, warn: d - 120, who: g && g.who ? plain(g.who) : '嘉宾' }; }
   return { dur: t.min * 60, warn: Math.max(0, t.min * 60 - 60), who: '自定义 ' + t.min + ' 分钟' };
 }
-function guestSegNow() { const s = curSeg(nowMin()); return s && s.timer && s.timer.mode === 'guest' ? s : SEG.find(x => x.timer && x.timer.mode === 'guest' && toMin(x.t1) > nowMin()); }
+function guestSegNow() { const sc = sched(), e = sc.list[sc.cur]; if (e && e.s.timer && e.s.timer.mode === 'guest') return e.s; const n = sc.list.slice(Math.max(0, sc.cur)).find(x => x.s.timer && x.s.timer.mode === 'guest'); return n ? n.s : null; }
 function elapsed() { const t = T(); return (t.acc + (t.run ? Date.now() - t.start : 0)) / 1000; }
 function order(b) {
   const t = T(), list = names(b), old = t.order[b] || [];
@@ -870,52 +937,77 @@ function timerTick() {
 /* ---------- 顶栏 ---------- */
 function drawTop() {
   const ms = nowMs(), d = new Date();
-  $('#clock').innerHTML = (S.reh || isLive() ? hm(ms) + '<small>' + pad(Math.floor(ms / 1000) % 60) + '</small>' : pad(d.getHours()) + ':' + pad(d.getMinutes()) + '<small>' + pad(d.getSeconds()) + '</small>');
-  const nm = nowMin(), s = isLive() ? curSeg(nm) : null;
-  $('#nowmini').textContent = s ? s.title + ' · 还剩 ' + mmss((toMin(s.t1) - nm) * 60) : (isLive() ? (nm < 720 ? '12:00 到场布场' : '活动结束，辛苦了') : '活动 11/7 周六 · 今天先做准备');
+  const clockOnly = LIVE() || !S.reh;
+  $('#clock').innerHTML = clockOnly && !isLive() || LIVE() ? pad(d.getHours()) + ':' + pad(d.getMinutes()) + '<small>' + pad(d.getSeconds()) + '</small>' : hm(ms) + '<small>' + pad(Math.floor(ms / 1000) % 60) + '</small>';
+  const sc = sched(), e = sc.list[sc.cur];
+  let mini = '';
+  if (e) { const rem = (e.b - sc.nm) * 60; mini = plain(e.s.title) + (rem >= 0 ? ' · 还剩 ' + mmss(rem) : ' · 超时 ' + mmss(-rem)); }
+  else if (LIVE()) mini = LV().done ? '今天的流程走完了' : '现场进度：还没开始';
+  else mini = isLive() ? (sc.nm < 720 ? '12:00 到场布场' : '活动结束，辛苦了') : '活动 11/7 周六 · 今天先做准备';
+  $('#nowmini').textContent = mini;
   const rb = $('#rolebtn'); rb.className = 'role ' + S.me; rb.textContent = S.names[S.me] + ' · ' + S.me;
-  const r = $('#reh'); r.style.display = S.reh ? 'block' : 'none'; if (S.reh) r.textContent = '演练模式：时间是假的（资料 → 设置 里关掉）';
+  const r = $('#reh'); const showReh = !LIVE() && S.reh; r.style.display = showReh ? 'block' : 'none'; if (showReh) r.textContent = '演练模式：时间是假的（资料 → 设置 里关掉）';
 }
 $('#rolebtn').onclick = () => { S.me = other(S.me); save(1); toast('现在按「' + esc(S.names[S.me]) + '（' + S.me + ' · ' + roleName(S.me) + '）」显示', 2500); render(); };
 
 /* ---------- 块渲染 ---------- */
-function blocks(list, nm, opt) {
+function blocks(list, nm, e) {
   return (list || []).map(b => {
-    const past = nm != null && b.at && toMin(b.at) + 1 <= nm;
-    const lab = (b.at ? '<span class="at">' + b.at + '</span>' : '') + (b.label ? T_(b.label.replace(/^\d\d:\d\d\s*/, '')) : (b.k === 'say' ? '照着说' : b.k === 'tip' ? '提醒' : ''));
-    return '<div class="blk ' + b.k + (past ? ' past' : '') + '">' + (lab ? '<div class="lab">' + lab + '</div>' : '') + '<div class="txt">' + T_(b.t) + '</div></div>';
+    let at = b.at, t = b.t, label = b.label;
+    if (at && e && LIVE()) { const pt = fmtMin(cueAt(e, at)); t = t.split(at).join(pt); label = label && label.split(at).join(pt); at = pt; }
+    const tAt = b.at ? (e ? cueAt(e, b.at) : toMin(b.at)) : null;
+    const past = nm != null && tAt != null && tAt + 1 <= nm;
+    const lab = (at ? '<span class="at">' + at + '</span>' : '') + (label ? T_(label.replace(/^\d\d:\d\d\s*/, '')) : (b.k === 'say' ? '照着说' : b.k === 'tip' ? '提醒' : ''));
+    return '<div class="blk ' + b.k + (past ? ' past' : '') + '">' + (lab ? '<div class="lab">' + lab + '</div>' : '') + '<div class="txt">' + T_(t) + '</div></div>';
   }).join('');
 }
 function kindName(k) { return { prep: '准备', host: '主持', speaker: '分享', intro: '自介', free: '交流' }[k] || ''; }
 
 /* ---------- 「现在」 ---------- */
 function vNow() {
-  if (!isLive()) return vPre();
-  const nm = nowMin(), s = curSeg(nm), nx = nextSeg(nm);
+  const sc = sched();
+  if (LIVE() && !sc.started) return vLiveStart();
+  if (!LIVE() && !isLive()) return vPre();
+  const nm = sc.nm, e = sc.list[sc.cur], nx = sc.list[sc.cur + 1];
   let h = '';
-  if (!s) {
+  if (!e) {
     if (nm < 720) h += '<div class="card"><div class="k">还没开始</div><h2>12:00 到场布场</h2><div class="big" data-cd="720">' + mmss((720 - nm) * 60) + '</div><div class="muted small">后开始布场</div></div>' + checklist(PREP[2], true);
     else h += '<div class="card"><h2>今天全部结束 🎉</h2><p>辛苦了！晚餐的票据记得交给雨哥。</p></div>';
     return h;
   }
-  const len = toMin(s.t1) - toMin(s.t0), pc = Math.min(100, (nm - toMin(s.t0)) / len * 100);
-  h += '<div class="card"><div class="k">现在 · ' + s.t0 + '–' + s.t1 + '<span class="kind">' + kindName(s.kind) + '</span></div><h2>' + T_(s.title) + (s.who ? ' <span class="muted small">' + T_(s.who) + '</span>' : '') + '</h2>' +
-    '<div style="display:flex;align-items:baseline;gap:8px"><div class="big" id="segrem">' + mmss((toMin(s.t1) - nm) * 60) + '</div><span class="muted small">本段还剩</span></div><div class="bar"><i id="segbar" style="width:' + pc + '%"></i></div>';
+  const s = e.s, len = e.b - e.a, rem = (e.b - nm) * 60, pc = Math.min(100, (nm - e.a) / len * 100);
+  h += '<div class="card"><div class="k">现在 · ' + fmtMin(e.a) + '–' + fmtMin(e.b) + (LIVE() && s.t0 && fmtMin(e.a) !== s.t0 ? '<span class="muted">（原 ' + s.t0 + '）</span>' : '') + '<span class="kind">' + (s.extra ? '临时' : kindName(s.kind)) + '</span></div><h2>' + T_(s.title) + (s.who ? ' <span class="muted small">' + T_(s.who) + '</span>' : '') + '</h2>' +
+    '<div style="display:flex;align-items:baseline;gap:8px"><div class="big" id="segrem"' + (rem < 0 ? ' style="color:var(--bad)"' : '') + '>' + (rem >= 0 ? mmss(rem) : '+' + mmss(-rem)) + '</div><span class="muted small" id="segremlab">' + (rem >= 0 ? '本段还剩' : '已超时') + '</span></div><div class="bar"><i id="segbar" style="width:' + pc + '%"></i></div>';
+  if (LIVE()) h += '<div class="small muted" style="margin-top:4px">计划 ' + segDur(s) + ' 分钟 · ' + lateText(sc) + '</div>';
   const btns = [];
   if (s.timer && S.me === (s.timerBy || 'A')) btns.push('<button class="btn pri" data-go-timer="' + s.timer.mode + '" data-batch="' + (s.timer.batch || '') + '">' + (s.timer.mode === 'intro' ? '⏱ 第' + BATCH_LABEL[s.timer.batch] + '批自介计时' : '⏱ ' + (s.timer.mode === 'yu' ? '雨哥 40 分钟' : '嘉宾 20 分钟') + '计时') + '</button>');
   btns.push('<button class="btn" data-tab-go="timer" data-sub="signs">🪧 提示牌</button>');
-  h += '<div class="btns" style="margin-top:10px">' + btns.join('') + '</div></div>';
+  h += '<div class="btns" style="margin-top:10px">' + btns.join('') + '</div>';
+  if (LIVE()) {
+    h += '<button class="btn ' + (rem < 0 ? 'bad' : 'b') + ' full" data-lv="next" style="margin-top:10px">' + (nx ? '▶ 进入下一环节：' + T_(nx.s.title) : '✓ 结束今天的流程') + '</button>' +
+      '<div class="btns" style="margin-top:8px"><button class="btn" data-lv="minus5">−5 分钟</button><button class="btn" data-lv="plus5">＋5 分钟</button><button class="btn" data-lv="plus10">＋10</button></div>' +
+      '<div class="btns" style="margin-top:8px"><button class="btn" data-lv="prev">◀ 回上一段</button>' + (nx ? '<button class="btn" data-lv="skipnext">⏭ 跳过下一段</button>' : '') + '<button class="btn" data-lv="insert">＋ 临时环节</button></div>' +
+      '<div id="insForm" style="display:none;margin-top:10px" class="field"><label>雨哥临时加的环节（插在当前这段后面）</label><div style="display:flex;gap:8px"><input id="insName" placeholder="例：抽奖 / 临时分享"><input id="insMin" type="number" value="10" min="1" max="120" style="width:80px"><button class="btn pri" data-lv="insgo">插入</button></div></div>';
+  }
+  h += '</div>';
   // 接下来的提醒
-  const up = myCues().filter(c => c.t * 60000 + 59000 > nowMs()).slice(0, 4);
-  if (up.length) h += '<div class="card"><div class="k">接下来要提醒你的</div>' + up.map(c => {
-    const dsec = c.t * 60 - nowMs() / 1000;
+  const up = (LIVE() ? cuesNow(sc) : myCues()).filter(c => c.t * 60 + 59 > nm * 60).slice(0, 4);
+  if (up.length) h += '<div class="card"><div class="k">接下来要提醒你的' + (LIVE() ? '（已按现场进度顺延）' : '') + '</div>' + up.map(c => {
+    const dsec = (c.t - nm) * 60;
     return '<div class="cue' + (dsec < 120 ? ' soon' : '') + '"><span class="when">' + c.at + '</span><span class="chip ' + c.who + '">' + esc(S.names[c.who]) + '</span><span>' + T_(c.text) + '</span><span class="cd" data-cue="' + c.t + '">' + (dsec > 0 ? mmss(dsec) : '现在') + '</span></div>';
   }).join('') + '</div>';
-  // 我做什么
-  h += '<div class="card"><div class="k"><span class="chip ' + S.me + '">' + esc(S.names[S.me]) + ' · ' + roleName(S.me) + '</span> 这一段你要</div>' + blocks(s[S.me], nm) + '</div>';
-  h += '<div class="card" style="background:var(--' + other(S.me) + 'bg)"><div class="k">' + esc(S.names[other(S.me)]) + ' 同时在做</div>' + blocks(s[other(S.me)], nm) + '</div>';
-  if (nx) h += '<div class="card"><div class="k">下一段 · ' + nx.t0 + '（' + mmss((toMin(nx.t0) - nm) * 60) + ' 后）</div><h2>' + T_(nx.title) + '</h2>' +
-    ((nx[S.me] || [])[0] ? blocks([nx[S.me][0]]) : '') + '<button class="btn full" data-flow="' + nx.id + '">看下一段全部内容</button></div>';
+  h += '<div class="card"><div class="k"><span class="chip ' + S.me + '">' + esc(S.names[S.me]) + ' · ' + roleName(S.me) + '</span> 这一段你要</div>' + blocks(s[S.me], nm, e) + '</div>';
+  h += '<div class="card" style="background:var(--' + other(S.me) + 'bg)"><div class="k">' + esc(S.names[other(S.me)]) + ' 同时在做</div>' + blocks(s[other(S.me)], nm, e) + '</div>';
+  if (nx) h += '<div class="card"><div class="k">下一段 · 预计 ' + fmtMin(nx.a) + '（' + mmss(Math.max(0, (nx.a - nm) * 60)) + ' 后）</div><h2>' + T_(nx.s.title) + '</h2>' +
+    ((nx.s[S.me] || [])[0] ? blocks([nx.s[S.me][0]], null, nx) : '') + '<button class="btn full" data-flow="' + nx.s.id + '">看下一段全部内容</button></div>';
+  return h;
+}
+function vLiveStart() {
+  let h = '';
+  if (todayStr() < EVENT.date) h += vPre();
+  h += '<div class="card"><div class="k">现场进度模式</div><h2>' + (LV().done ? '今天的流程已走完 🎉' : '活动开始时，点一下开始') + '</h2><p class="small" style="margin:6px 0 10px">不按时钟死卡：每到下一个环节点「下一环节」，后面的时间和提醒自动顺延。雨哥临时调整、自介超时都没关系——加减时间、跳过、插入环节都能当场改。</p>' +
+    '<div class="btns"><button class="btn b" data-lv-start="setup">▶ 从「到场布场」开始</button><button class="btn pri" data-lv-start="open">▶ 从「主持开场」开始</button></div>' +
+    '<p class="small muted" style="margin-top:8px">也可以在「流程」页点任意一段 →「从这里开始」。想按固定时间走，到「资料 → 设置」改成「按时钟」。</p></div>';
   return h;
 }
 function vPre() {
@@ -923,9 +1015,9 @@ function vPre() {
   const ev = new Date(2026, 10, 7, 13, 0, 0), diff = (ev - new Date()) / 1000;
   let h = '<div class="card"><div class="k">' + esc(EVENT.title) + ' · 11/7 周六 13:00 · 深圳</div>';
   h += diff > 0 ? '<div class="big" id="evcd">' + cdText(diff) + '</div><div class="muted small">距离开场</div>' : '<h2>活动已结束</h2>';
-  h += '<p class="small" style="margin:8px 0 0">你是 <span class="chip ' + S.me + '">' + esc(S.names[S.me]) + ' · ' + S.me + ' · ' + roleName(S.me) + '</span>（点右上角可切换）。活动当天这一页会自动变成「现在该做什么」。</p></div>';
+  h += '<p class="small" style="margin:8px 0 0">你是 <span class="chip ' + S.me + '">' + esc(S.names[S.me]) + ' · ' + S.me + ' · ' + roleName(S.me) + '</span>（点右上角可切换）。' + (LIVE() ? '活动开始时，在下面点「开始」，这一页就会跟着现场进度走。' : '活动当天这一页会自动变成「现在该做什么」。') + '</p></div>';
   if (idx >= 0) h += checklist(PREP[idx], true);
-  h += '<div class="card"><div class="k">想先走一遍？</div><p class="small" style="margin:4px 0 8px">演练模式会把时间拨到当天某个时刻，提醒、倒计时都会按那个时间走。</p><div class="btns">' +
+  if (!LIVE()) h += '<div class="card"><div class="k">想先走一遍？</div><p class="small" style="margin:4px 0 8px">演练模式会把时间拨到当天某个时刻，提醒、倒计时都会按那个时间走。</p><div class="btns">' +
     ['12:50', '13:00', '13:46', '14:31', '14:52'].map(t => '<button class="btn" data-reh="' + t + '">' + t + '</button>').join('') + '</div></div>';
   h += '<div class="card"><div class="k">今天两人要拍板的</div><p class="small" style="margin:4px 0 8px">手册没写死的 ' + DISCUSS.length + ' 件事，都给了默认做法。</p><button class="btn full" data-more="discuss">打开「商量」清单</button></div>';
   return h;
@@ -935,15 +1027,20 @@ function cdText(sec) { const d = Math.floor(sec / 86400), h = Math.floor(sec % 8
 /* ---------- 「流程」 ---------- */
 let openFlow = null;
 function vFlow() {
-  const nm = isLive() ? nowMin() : -1;
-  let h = '<div class="card small"><b>A 管时间，B 管现场和人。</b> 点任一段看两人的全部内容。四次回座提醒：14:32、15:37、16:42、17:47；18:52 集合提醒，18:55 结束说明。</div><div class="flow">';
-  SEG.forEach(s => {
-    const cur = nm >= toMin(s.t0) && nm < toMin(s.t1), done = nm >= toMin(s.t1);
-    h += '<div class="fitem' + (cur ? ' cur' : '') + (done ? ' done' : '') + '" data-fid="' + s.id + '"><div class="tm">' + s.t0 + '<small>' + s.t1 + '</small></div><div class="ti"><b>' + T_(s.title) + '<span class="kind">' + kindName(s.kind) + '</span></b>' +
-      '<span class="small muted">' + (s.who ? T_(s.who) + ' · ' : '') + (toMin(s.t1) - toMin(s.t0)) + ' 分钟' + (cur ? ' · <b style="color:var(--A)">进行中</b>' : '') + '</span></div></div>' +
+  const sc = sched(), nm = sc.nm, L = LV();
+  let h = '<div class="card small"><b>A 管时间，B 管现场和人。</b> 点任一段看两人的全部内容。' + (LIVE() ? '时间是按现场进度算的<b>预计时间</b>（灰字是原计划）。' + (sc.started ? '<br>' + lateText(sc) : '') : '四次回座提醒：14:32、15:37、16:42、17:47；18:52 集合提醒，18:55 结束说明。') + '</div>';
+  const skipped = LIVE() ? SEG.filter(s => L.skip[s.id]) : [];
+  if (skipped.length) h += '<div class="card small"><div class="k">已跳过</div>' + skipped.map(s => '<div style="display:flex;justify-content:space-between;align-items:center;padding:4px 0"><span>' + T_(s.title) + '</span><button class="btn" data-lv-skip="' + s.id + '">恢复</button></div>').join('') + '</div>';
+  h += '<div class="flow">';
+  sc.list.forEach((e, i) => {
+    const s = e.s, cur = i === sc.cur, done = sc.started ? i < sc.cur : false;
+    const showA = e.a != null ? fmtMin(e.a) : '--:--', showB = e.b != null ? fmtMin(e.b) : '';
+    h += '<div class="fitem' + (cur ? ' cur' : '') + (done ? ' done' : '') + '" data-fid="' + s.id + '"><div class="tm">' + showA + '<small>' + showB + '</small>' + (LIVE() && s.t0 && showA !== s.t0 ? '<small style="text-decoration:line-through">' + s.t0 + '</small>' : '') + '</div><div class="ti"><b>' + T_(s.title) + '<span class="kind">' + (s.extra ? '临时' : kindName(s.kind)) + '</span></b>' +
+      '<span class="small muted">' + (s.who ? T_(s.who) + ' · ' : '') + segDur(s) + ' 分钟' + (cur ? ' · <b style="color:var(--A)">进行中</b>' : '') + '</span></div></div>' +
       '<div class="detail' + (openFlow === s.id ? ' open' : '') + '" id="d-' + s.id + '">' +
-      '<div class="side A"><span class="k">' + esc(S.names.A) + '（A）</span>' + blocks(s.A, nm >= 0 ? nm : null) + '</div>' +
-      '<div class="side B"><span class="k">' + esc(S.names.B) + '（B）</span>' + blocks(s.B, nm >= 0 ? nm : null) + '</div></div>';
+      (LIVE() ? '<div class="btns" style="margin:8px 0">' + (cur ? '' : '<button class="btn b" data-lv-jump="' + s.id + '">▶ 从这里开始 / 跳到这里</button>') + (s.extra ? '<button class="btn" data-lv-del="' + s.id + '">删除临时环节</button>' : (cur ? '' : '<button class="btn" data-lv-skip="' + s.id + '">跳过这段</button>')) + '</div>' : '') +
+      '<div class="side A"><span class="k">' + esc(S.names.A) + '（A）</span>' + (blocks(s.A, sc.started || !LIVE() ? nm : null, e) || '<div class="small muted">—</div>') + '</div>' +
+      '<div class="side B"><span class="k">' + esc(S.names.B) + '（B）</span>' + (blocks(s.B, sc.started || !LIVE() ? nm : null, e) || '<div class="small muted">—</div>') + '</div></div>';
   });
   return h + '</div>';
 }
@@ -1025,6 +1122,7 @@ function vMore() {
         (f.area ? '<textarea data-info="' + f.k + '" placeholder="' + esc(f.hint || '') + '">' + esc(S.info[f.k] || '') + '</textarea>' : '<input data-info="' + f.k + '" value="' + esc(S.info[f.k] || '') + '" placeholder="' + esc(f.hint || '') + '">') +
         (f.k === 'yuBio' && !S.info.yuBio ? '<div class="hint">' + esc(f.hint) + ' <button class="small" data-usehint="yuBio" style="text-decoration:underline;color:var(--info)">先用这个草稿</button></div>' : '') + '</div>').join('') + '</div>';
     });
+    h += '<div class="card"><h2>一键分批</h2><p class="small muted" style="margin-top:0">把全部报名名单（40 多人）粘贴进来，自动平均分成五批：人少的批次放前面（第①批前有猜拳热身、第②批紧跟在分享后面），每批最多 10 人。分完可以在下面手动微调。</p><div class="field"><textarea id="allNames" rows="5" placeholder="一行一个称呼，或用顿号、逗号隔开"></textarea></div><button class="btn pri full" id="autoSplit">自动分成五批</button><div id="splitRes" class="small" style="margin-top:6px"></div></div>';
     h += '<div class="card"><h2>五批自介名单</h2><p class="small muted" style="margin-top:0">一行一个称呼（也可以用顿号、逗号隔开），按上场顺序。每批最多 10 人。</p>' +
       [1, 2, 3, 4, 5].map(b => '<div class="field"><label>第' + BATCH_LABEL[b] + '批 · ' + SEG.find(x => x.id === 'batch' + b).t0 + '</label><textarea data-batch="' + b + '" rows="4">' + esc(S.batches[b] || '') + '</textarea><div id="bchk' + b + '">' + batchCheck(b) + '</div></div>').join('') + '</div>';
   }
@@ -1049,6 +1147,9 @@ function vMore() {
     h += '<div class="card"><h2>我是谁</h2><div class="btns">' + ['A', 'B'].map(r => '<button class="btn' + (S.me === r ? (r === 'A' ? ' pri' : ' b') : '') + '" data-me="' + r + '">' + esc(S.names[r]) + '<br><small>' + r + ' · ' + roleName(r) + '</small></button>').join('') + '</div>' +
       '<div class="field" style="margin-top:10px"><label>A（主持·计时·召集）的名字</label><input data-name="A" value="' + esc(S.names.A) + '"></div><div class="field"><label>B（接待·场务·晚餐）的名字</label><input data-name="B" value="' + esc(S.names.B) + '"></div>' +
       '<button class="btn" id="swap">对调两人的角色</button></div>';
+    h += '<div class="card"><h2>流程怎么走</h2><div class="btns">' + [['live', '跟现场进度（推荐）'], ['clock', '按时钟']].map(m => '<button class="btn' + ((S.mode || 'live') === m[0] ? ' pri' : '') + '" data-mode="' + m[0] + '">' + m[1] + '</button>').join('') + '</div><p class="small muted" style="margin-top:6px">跟现场进度：每到下一个环节点一下，后面的时间和提醒自动顺延，可以加减时间、跳过、插入临时环节。按时钟：严格按手册时间表自动切换。</p>' +
+      (LIVE() && LV().cur ? '<button class="btn" id="lvReset" style="margin-top:6px">重置现场进度（从头开始）</button>' : '') + '</div>';
+    h += '<div class="card"><h2>自介计时</h2><div class="btns">' + [[60, '1 分钟'], [90, '1.5 分钟'], [120, '2 分钟']].map(x => '<button class="btn' + ((S.introSec || 60) === x[0] ? ' pri' : '') + '" data-isec="' + x[0] + '">' + x[1] + '</button>').join('') + '</div><p class="small muted" style="margin-top:6px">最后 5 秒变黄提示，到时变红；只是提示，不会自动切走。</p></div>';
     h += '<div class="card"><h2>提醒</h2><label class="chk"><input type="checkbox" id="sound"' + (S.sound ? ' checked' : '') + '><span>提示音（手机别静音；iPhone 只有提示音没有振动）</span></label>' +
       '<label class="chk"><input type="checkbox" id="both"' + (S.alertBoth ? ' checked' : '') + '><span>搭档的提醒点也提醒我</span></label><button class="btn" id="testbeep">试一下提醒</button></div>';
     h += '<div class="card"><h2>演练模式</h2><p class="small" style="margin-top:0">把时间拨到当天某个时刻，提醒和倒计时都按它走。周五彩排用。</p><div style="display:flex;gap:8px"><input id="rehT" type="time" value="' + (S.reh ? hm(nowMs()) : '13:00') + '" style="flex:1;padding:10px;border-radius:10px;border:1px solid var(--line);background:var(--bg)"><button class="btn pri" id="rehGo">开始</button>' + (S.reh ? '<button class="btn bad" id="rehStop">关掉</button>' : '') + '</div></div>';
@@ -1122,6 +1223,22 @@ document.addEventListener('click', e => {
   if (d.tsub) { tSub = d.tsub; render(); return; }
   if (d.sign) { showSign(d.sign, d.c); return; }
   if (d.emg != null) { openEmg = openEmg === +d.emg ? -1 : +d.emg; render.keep = true; render(); return; }
+  if (d.lv) {
+    const L = LV(), sc = sched(), e = sc.list[sc.cur];
+    if (d.lv === 'next') return lvNext();
+    if (d.lv === 'prev') return lvPrev();
+    if (d.lv === 'plus5' || d.lv === 'plus10' || d.lv === 'minus5') { if (!e) return; const k = d.lv === 'plus10' ? 10 : d.lv === 'plus5' ? 5 : -5; L.adj[e.s.id] = (L.adj[e.s.id] || 0) + k; if (segDur(e.s) < 1) L.adj[e.s.id] = 1 - planDur(e.s); save(1); render.keep = true; render(); toast((k > 0 ? '本段延长 ' : '本段缩短 ') + Math.abs(k) + ' 分钟，后面全部顺延', 2000); return; }
+    if (d.lv === 'skipnext') { const nx = sc.list[sc.cur + 1]; if (!nx) return; if (nx.s.extra) L.extra = L.extra.filter(x => x.id !== nx.s.id); else L.skip[nx.s.id] = true; save(1); render.keep = true; render(); toast('已跳过：' + T_(nx.s.title) + '（流程页可恢复）', 3000); return; }
+    if (d.lv === 'insert') { const f = $('#insForm'); f.style.display = f.style.display === 'none' ? 'block' : 'none'; return; }
+    if (d.lv === 'insgo') { const n = ($('#insName').value || '').trim() || '临时环节', m = Math.max(1, Math.min(120, +$('#insMin').value || 10)); if (!e) return; const id = 'x' + Date.now(); L.extra.push({ id, extra: true, title: n, min: m, kind: 'custom', after: e.s.extra ? e.s.after : e.s.id, A: [{ k: 'do', t: '临时环节：' + n + '（约 ' + m + ' 分钟）。结束后点「下一环节」。' }], B: [{ k: 'do', t: '配合临时环节：' + n + '。' }] }); save(1); render.keep = true; render(); toast('已插入「' + esc(n) + '」' + m + ' 分钟，后面全部顺延', 2500); return; }
+    return;
+  }
+  if (d.lvStart) { lvGo(d.lvStart); go('now'); return; }
+  if (d.lvJump) { if (!confirm('从「' + plain((segList().find(x => x.id === d.lvJump) || {}).title || '') + '」开始？之前的环节当作已经结束。')) return; lvGo(d.lvJump); go('now'); return; }
+  if (d.lvSkip) { const L = LV(); L.skip[d.lvSkip] = !L.skip[d.lvSkip]; if (!L.skip[d.lvSkip]) delete L.skip[d.lvSkip]; save(1); render.keep = true; render(); return; }
+  if (d.lvDel) { const L = LV(); L.extra = L.extra.filter(x => x.id !== d.lvDel); save(1); render.keep = true; render(); return; }
+  if (d.mode) { S.mode = d.mode; lastNm = LIVE() ? realMin() : nowMin(); save(1); render.keep = true; render(); return; }
+  if (d.isec) { S.introSec = +d.isec; save(1); render.keep = true; render(); return; }
   if (d.reh) { S.reh = { base: toMin(d.reh) * 60000, real: Date.now() }; lastNm = nowMin(); save(1); toast('演练模式：现在是 ' + d.reh + '（资料 → 设置 里关掉）', 3000); go('now'); return; }
   if (d.tmode) { const t = T(); if (t.run) { toast('先暂停当前计时再切换', 2000); return; } t.mode = d.tmode; t.acc = 0; t.flag = 0; save(1); render(); return; }
   if (d.tbatch) { const t = T(); if (t.run) { toast('先暂停当前计时再切换批次', 2000); return; } t.batch = +d.tbatch; t.acc = 0; t.flag = 0; save(1); render(); return; }
@@ -1146,6 +1263,17 @@ document.addEventListener('click', e => {
   if (id === 'testbeep') { unlockAudio(); setTimeout(() => { beep(2); buzz([200, 100, 200]); toast('🔔 14:32 · 回座提醒（站到召集位）<small>这是测试提醒</small>', 3000); }, 50); return; }
   if (id === 'rehGo') { const v = $('#rehT').value || '13:00'; S.reh = { base: toMin(v) * 60000, real: Date.now() }; lastNm = nowMin(); save(1); toast('演练模式：现在是 ' + v, 2500); go('now'); return; }
   if (id === 'rehStop') { S.reh = null; lastNm = nowMin(); save(1); render(); return; }
+  if (id === 'autoSplit') {
+    const all = String($('#allNames').value || '').split(/[\n,，、;；]+/).map(x => x.trim()).filter(Boolean);
+    if (!all.length) { $('#splitRes').innerHTML = '<span class="warnline">先把名单粘贴进来</span>'; return; }
+    if ([1, 2, 3, 4, 5].some(b => names(b).length) && !confirm('五批名单里已经有人了，用新名单覆盖？')) return;
+    const n = all.length, base = Math.floor(n / 5), r = n % 5, size = [0, base, base, base, base, base];
+    for (let k = 0; k < r; k++) size[5 - k]++;
+    let p = 0; [1, 2, 3, 4, 5].forEach(b => { S.batches[b] = all.slice(p, p + size[b]).join('\n'); p += size[b]; });
+    save(1); render.keep = true; render();
+    toast('已分好：' + n + ' 人 → ' + [1, 2, 3, 4, 5].map(b => BATCH_LABEL[b] + size[b]).join(' · ') + (size[5] > 10 ? '（超过 50 人，有批次超 10 人，请手动调）' : ''), 5000); return;
+  }
+  if (id === 'lvReset') { if (confirm('重置现场进度？加减的时间、跳过和临时环节都会清掉。')) { S.lv = null; save(1); render(); } return; }
   if (id === 'clrchk') { if (confirm('清空所有打勾？')) { S.checks = {}; save(1); render(); } return; }
   if (id === 'clrall') { if (confirm('清空全部数据（信息、名单、打勾都会没了）？')) { S = JSON.parse(JSON.stringify(DEF)); save(1); render(); } return; }
 });
@@ -1174,13 +1302,13 @@ window.onBack = function () {
 };
 
 /* ---------- 每 250ms ---------- */
-let lastNm = nowMin();
+let lastNm = LIVE() ? realMin() : nowMin();
 function tick() {
   drawTop();
-  const nm = nowMin();
-  // 提醒点
-  if (isLive()) {
-    const hits = myCues().filter(c => c.t > lastNm && c.t <= nm && nm - c.t < 2);
+  const sc = sched(), nm = sc.nm;
+  if (sc.started) {
+    const pool = LIVE() ? cuesNow(sc) : myCues();
+    const hits = pool.filter(c => c.t > lastNm && c.t <= nm && nm - c.t < 2);
     if (hits.length) {
       const c = hits[hits.length - 1];
       toast('🔔 ' + c.at + ' · ' + T_(c.text) + '<small>' + esc(S.names[c.who]) + '（' + c.who + '）· 点这里关闭</small>', 15000);
@@ -1188,11 +1316,15 @@ function tick() {
     }
   }
   lastNm = nm;
-  const s = isLive() ? curSeg(nm) : null, sid = s ? s.id : null;
+  const e = sc.list[sc.cur], sid = e ? e.s.id : null;
   if (sid !== lastSeg) { lastSeg = sid; if (S.tab === 'now' || S.tab === 'flow') { render.keep = S.tab === 'flow'; render(); } }
   if (S.tab === 'now') {
-    if (s) { const r = $('#segrem'); r && (r.textContent = mmss((toMin(s.t1) - nm) * 60)); const b = $('#segbar'); b && (b.style.width = Math.min(100, (nm - toMin(s.t0)) / (toMin(s.t1) - toMin(s.t0)) * 100) + '%'); }
-    $$('[data-cue]').forEach(x => { const ds = +x.dataset.cue * 60 - nowMs() / 1000; x.textContent = ds > 0 ? mmss(ds) : '现在'; x.parentNode.classList.toggle('soon', ds < 120); });
+    if (e) {
+      const rem = (e.b - nm) * 60, r = $('#segrem');
+      if (r) { r.textContent = rem >= 0 ? mmss(rem) : '+' + mmss(-rem); r.style.color = rem < 0 ? 'var(--bad)' : ''; const l = $('#segremlab'); l && (l.textContent = rem >= 0 ? '本段还剩' : '已超时'); }
+      const b = $('#segbar'); b && (b.style.width = Math.min(100, (nm - e.a) / (e.b - e.a) * 100) + '%');
+    }
+    $$('[data-cue]').forEach(x => { const ds = (+x.dataset.cue - nm) * 60; x.textContent = ds > 0 ? mmss(ds) : '现在'; x.parentNode.classList.toggle('soon', ds < 120); });
     const dc = $('[data-cd]'); if (dc) dc.textContent = mmss((+dc.dataset.cd - nm) * 60);
     const ev = $('#evcd'); if (ev) ev.textContent = cdText((new Date(2026, 10, 7, 13) - new Date()) / 1000);
   }
