@@ -160,6 +160,80 @@ hr{border:0;border-top:1px solid var(--line);margin:12px 0}
 .bingo{display:grid;grid-template-columns:repeat(3,1fr);border:2px solid #222;margin:6px 0 4px}
 .bingo div{border:1px solid #222;height:31mm;padding:6px;font-weight:700;font-size:11pt;display:flex;flex-direction:column;justify-content:space-between}
 .bingo div span{font-size:8pt;color:#888;font-weight:500;border-top:1px dashed #aaa;padding-top:2px}
+
+/* 物料包（彩色打印） */
+@page land{size:A4 landscape;margin:0}
+@page port{size:A4 portrait;margin:0}
+body.kit{-webkit-print-color-adjust:exact;print-color-adjust:exact;background:#fff;color:#1d2333}
+body.kit main{padding:0;max-width:none}
+.kp,.kl{position:relative;overflow:hidden;break-after:page;background:#fff}
+.kp{page:port;width:210mm;height:297mm}
+.kl{page:land;width:297mm;height:210mm}
+.kp:last-child,.kl:last-child{break-after:auto}
+.k-foot{position:absolute;left:0;right:0;bottom:7mm;text-align:center;font-size:9pt;color:#9aa0b0}
+.k-region{position:absolute;inset:10mm;border-radius:8mm;border:3mm solid var(--c);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.k-region .tag{position:absolute;top:0;left:0;right:0;background:var(--c);color:#fff;font-size:17pt;font-weight:800;padding:4mm 0;letter-spacing:2px}
+.k-region .big{font-size:118pt;font-weight:900;color:var(--c);line-height:1.05;letter-spacing:4px}
+.k-region .big.long{font-size:84pt}
+.k-region .sub{font-size:20pt;color:#444;margin-top:6mm;font-weight:600}
+.k-region .bot{position:absolute;bottom:5mm;font-size:12pt;color:#777}
+.k-sign{position:absolute;inset:10mm;border-radius:8mm;background:var(--c);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.k-sign .big{font-size:150pt;font-weight:900;line-height:1.05;letter-spacing:6px}
+.k-sign .big.mid{font-size:112pt}
+.k-sign .sub{font-size:22pt;font-weight:700;opacity:.92;margin-top:6mm}
+.k-way{position:absolute;inset:10mm;border-radius:8mm;border:3mm solid #1d2333;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.k-way .big{font-size:120pt;font-weight:900;line-height:1.05;letter-spacing:6px;color:#1d2333}
+.k-way .sub{font-size:22pt;color:#E8613C;font-weight:800;margin-top:6mm}
+.k-way .ev{position:absolute;top:8mm;font-size:15pt;color:#777;font-weight:700;letter-spacing:2px}
+.k-tags{position:absolute;left:15mm;top:13.5mm;display:grid;grid-template-columns:90mm 90mm;grid-auto-rows:54mm}
+.k-tag{box-sizing:border-box;border:.3mm dashed #b9bdc8;position:relative;overflow:hidden;display:flex}
+.k-tag .tb{width:15mm;background:var(--c);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;flex:none}
+.k-tag .tb b{font-size:26pt;line-height:1}
+.k-tag .tb span{font-size:6.5pt;margin-top:1.5mm;font-weight:700;line-height:1.2}
+.k-tag .body{flex:1;padding:3mm 4mm 2.5mm;display:flex;flex-direction:column}
+.k-tag .ev{font-size:6.5pt;color:#888;font-weight:700;letter-spacing:.5px;display:flex;justify-content:space-between}
+.k-tag .egg{font-size:7pt;color:var(--c);font-weight:800;margin-top:.8mm}
+.k-tag .ln{border-bottom:.35mm solid #c7cbd4;font-size:7pt;color:#9aa0b0;padding-top:2.2mm;display:flex;align-items:flex-end}
+.k-tag .ln.name{flex:1.6;font-size:7.5pt}
+.k-tag .ln{flex:1}
+.k-head{padding:14mm 15mm 0}
+.k-h1{font-size:24pt;font-weight:900;margin:0}
+.k-sub{color:#6b7080;font-size:10.5pt;margin-top:1mm}
+.k-tbl{width:100%;border-collapse:collapse;font-size:9.5pt;margin-top:4mm}
+.k-tbl th,.k-tbl td{border:.3mm solid #c7cbd4;padding:2mm 2.5mm;text-align:left;vertical-align:top}
+.k-tbl th{background:#f3efe5}
+.k-note{border-radius:3mm;background:#fdeee7;padding:3mm 4mm;margin-top:4mm;font-size:10pt}
+.k-note b{color:#d9542b}
+.k-sheet{width:100%;border-collapse:collapse;font-size:10pt;margin-top:3mm}
+.k-sheet th,.k-sheet td{border:.3mm solid #8a90a0;height:9mm;padding:0 2mm}
+.k-sheet th{background:#1d2333;color:#fff;font-weight:700;height:9mm}
+.k-sheet td.n{text-align:center;color:#888;width:9mm}
+.k-sheet td.c{text-align:center;color:#c7cbd4;font-size:13pt;width:16mm}
+.k-tent{position:absolute;inset:0}
+.k-tent .half{position:absolute;left:12mm;right:12mm;height:93mm;display:flex;flex-direction:column;justify-content:center;padding:0 10mm}
+.k-tent .half.top{top:6mm;transform:rotate(180deg)}
+.k-tent .half.bot{bottom:6mm}
+.k-tent .fold{position:absolute;left:0;right:0;top:105mm;border-top:.4mm dashed #b9bdc8}
+.k-tent .fold span{position:absolute;right:6mm;top:-3.5mm;background:#fff;font-size:8pt;color:#9aa0b0;padding:0 2mm}
+.k-tent h2{font-size:38pt;margin:0 0 3mm;color:#E8613C}
+.k-tent p{font-size:19pt;margin:0;line-height:1.55;font-weight:600}
+.k-tent .s{font-size:12.5pt;color:#555;margin-top:3mm;font-weight:500}
+.k-pocket{position:absolute;inset:0;display:grid;grid-template-columns:105mm 105mm;grid-template-rows:148.5mm 148.5mm}
+.k-pc{box-sizing:border-box;border:.3mm dashed #b9bdc8;padding:7mm 7mm 5mm;font-size:8.3pt;line-height:1.45;overflow:hidden}
+.k-pc h3{font-size:12.5pt;margin:0 0 2mm;color:#E8613C}
+.k-pc .r{display:flex;gap:2mm;border-bottom:.2mm solid #eee;padding:.7mm 0}
+.k-pc .r b{min-width:11mm;font-variant-numeric:tabular-nums}
+.k-pc .q{background:#fdeee7;border-radius:1.5mm;padding:1.4mm 2mm;margin:1.4mm 0}
+.k-pc .q i{font-style:normal;color:#d9542b;font-weight:800;display:block;font-size:7.5pt}
+.k-bingo{padding:10mm 14mm 0}
+.k-bingo .card{margin-bottom:5mm}
+.k-bingo .hd{background:#11806F;color:#fff;border-radius:3mm 3mm 0 0;padding:2.5mm 4mm;display:flex;justify-content:space-between;align-items:baseline}
+.k-bingo .hd b{font-size:15pt}
+.k-bingo .rule{font-size:8.5pt;color:#444;padding:1.5mm 1mm}
+.k-bingo .grid{display:grid;grid-template-columns:repeat(3,1fr);border:.6mm solid #11806F}
+.k-bingo .grid div{border:.3mm solid #9fd3c8;height:30mm;padding:2mm 2.5mm;font-weight:800;font-size:10.5pt;display:flex;flex-direction:column;justify-content:space-between}
+.k-bingo .grid div span{font-size:7.5pt;color:#9aa0b0;font-weight:500;border-top:.3mm dashed #c7cbd4;padding-top:1mm}
+.k-poster{padding:14mm 15mm 0}
 </style>
 </head>
 <body>
@@ -202,7 +276,7 @@ const INFO = [
   { g: '现场', k: 'recallSpot', l: '固定召集位置', hint: '主持人每次喊回座站的地方，例：投影左侧' },
   { g: '现场', k: 'photoSpot', l: '合影位置', hint: '例：投影幕前' },
   { g: '现场', k: 'music', l: '回座音乐（曲名）', hint: '30 秒内能认出来、不吵的一段' },
-  { g: '破冰', k: 'mapLayout', l: '出海地图：五个区域在房间哪', area: 1, def: '前面是东南亚，后面是欧美，左边是中东和非洲，右边是拉美，正中间留给还在找方向的朋友', hint: '不填就用默认：前面东南亚、后面欧美、左边中东非洲、右边拉美、中间还在找方向；按场地实际方位改' },
+  { g: '破冰', k: 'mapLayout', l: '出海地图：六个区域在房间哪', area: 1, def: '前面是东南亚，后面是欧美，左边是中东和非洲，右边是拉美，门口那边是日韩、南亚和澳新，正中间留给还在找方向的朋友', hint: '不填就用默认：前面东南亚、后面欧美、左边中东非洲、右边拉美、门口日韩南亚澳新、中间还在找方向；按场地实际方位改' },
   { g: '破冰', k: 'demo1', l: '我的示范 ①「三个标签」', hint: '例：东南亚 / 消费电子 / 正在学 Agent' },
   { g: '破冰', k: 'demo2', l: '我的示范 ②「两真一假」', area: 1, hint: '三件关于你的小事，其中一件是假的' },
   { g: '破冰', k: 'demo3', l: '我的示范 ③「出海名场面」', area: 1, hint: '一句话：海外或跟外国客户打交道时最好笑 / 最尴尬的一刻' },
@@ -218,6 +292,15 @@ const INFO = [
   { g: '晚餐', k: 'arriveTime', l: '预计到店时间' },
 ];
 const BATCH_LABEL = ['', '①', '②', '③', '④', '⑤'];
+const BATCH_COLOR = ['#5B6475', '#E8613C', '#11806F', '#2F5FD0', '#8A4FD0', '#C98A00'];
+const REGIONS = [
+  { t: '东南亚', sub: '越南 · 泰国 · 印尼 · 马来西亚 · 菲律宾 · 新加坡', c: '#11806F' },
+  { t: '欧美', sub: '美国 · 加拿大 · 英国 · 德国 · 法国 · 欧洲各国', c: '#2F5FD0' },
+  { t: '中东 · 非洲', sub: '沙特 · 阿联酋 · 土耳其 · 埃及 · 尼日利亚 · 南非', c: '#C98A00' },
+  { t: '拉美', sub: '墨西哥 · 巴西 · 智利 · 哥伦比亚 · 秘鲁 · 阿根廷', c: '#E8613C' },
+  { t: '日韩 · 南亚 · 澳新', sub: '日本 · 韩国 · 印度 · 巴基斯坦 · 澳大利亚 · 新西兰', c: '#8A4FD0' },
+  { t: '还在找方向', sub: '转行中 · 刚毕业 · 还在探索做哪个市场', c: '#5B6475' },
+];
 
 /* ---------- 五批自介的「彩蛋」：都在每人 1 分钟之内完成，不加时 ---------- */
 const ICE = [
@@ -328,7 +411,7 @@ const SEG = [
       { k: 'do', t: '两人过一遍计时手势 / 提示牌；确认每次喊回座时站哪（{recallSpot}）。' },
       { k: 'do', t: '如果用回座音乐：连上音响试放 10 秒（{music}）。' },
       { k: 'do', t: '手机充满电、开勿扰（保留振动）；这个 App 打开「现在」页，屏幕会保持常亮。' },
-      { k: 'do', t: '出海地图：把 5 张区域纸（东南亚 / 欧美 / 中东非洲 / 拉美 / 还在找方向）按 {mapLayout} 贴好；自介玩法海报贴在签到台。' },
+      { k: 'do', t: '出海地图：把物料包里 6 张区域牌按 {mapLayout} 贴好；玩法海报贴签到台，自介台卡立在话筒位，指路牌贴好。' },
     ],
     B: [
       { k: 'do', t: '摆签到台、签到表、笔；摆水和指路信息。' },
@@ -339,7 +422,7 @@ const SEG = [
   {
     id: 'checkin', t0: '12:30', t1: '12:55', kind: 'prep', title: '迎宾签到',
     A: [
-      { k: 'do', t: '和 {B} 一起守签到台：{B} 核对完名单，你接着发名牌、告诉 TA 是第几批自介，顺口说一句这批的彩蛋（指一下海报），让大家提前想。' },
+      { k: 'do', t: '和 {B} 一起守签到台：{B} 核对完名单，你按批次发对应颜色的名牌（名牌上印好了第几批和彩蛋），顺口说一句这批的彩蛋，让大家提前想。' },
       { k: 'do', t: '引导名牌由本人选填：称呼 / 方向 / 想聊的话题；签完到的人帮着互相介绍，别让人干坐着。' },
       { k: 'do', t: '临时变化（没报名的、来不了的、要换批次的）当场记下，由你统一调整五批名单。' },
       { k: 'say', at: '12:50', cue: '软广播：还有 10 分钟开始', label: '12:50 软广播', t: '各位朋友下午好，活动 13:00 准时开始。还没签到的朋友请先到门口签到、领名牌；名牌上写好称呼、方向和今天想聊的话题，贴在胸前就好。' },
@@ -370,13 +453,13 @@ const SEG = [
       { k: 'tip', t: '人多、座位挪不动，就当场改举手版：「在做东南亚的朋友请举手！欧美的？中东非洲的？拉美的？还在找方向的？」每个区请一位说一句。' },
       { k: 'say', label: '③ 讲清三件事（约 2 分钟）', t: '今天下午记住三件事。\n第一，今天有分享、五批自介和五轮自由交流。雨哥先分享，后面还有三位嘉宾，每段分享后面接一批自介，然后自由交流。\n第二，每人自介一分钟。我按名单把大家分成了五批，签到时我们已经告诉您是第几批。55 秒我会提示，60 秒我会友好地接话——不是打断您，是让后面每一位都有完整的一分钟。想深入聊的，留到紧接着的自由交流。\n第三，回座。每轮交流结束前三分钟，我会在 {recallSpot} 用话筒提醒，请大家到点回座，方便下一位嘉宾准时开始。' },
       { k: 'say', label: '④ 示范回座音乐（若用，约 20 秒）', t: '提醒的时候我会放这段音乐——（放 10 秒）——听到它，就收一下手上的话题，准备回座。' },
-      { k: 'say', label: '⑤ 自介模板（约 1 分钟）', t: '自介不用准备稿子，照这个说就行：「大家好，我是＿＿，目前在做＿＿／准备转向＿＿。我有＿＿方面的经验或技能；今天想交流＿＿，下一轮自由交流欢迎来找我。」转行和应届的朋友，中间一句可以换成「我正在学习或尝试＿＿，想请教＿＿」。说自己愿意公开的内容，留一个具体的记忆点就好。\n另外，每一批自介都藏了一个小彩蛋玩法，签到台的海报上有，轮到哪一批我再说。' },
+      { k: 'say', label: '⑤ 自介模板（约 1 分钟）', t: '自介不用准备稿子，照这个说就行：「大家好，我是＿＿，目前在做＿＿／准备转向＿＿。我有＿＿方面的经验或技能；今天想交流＿＿，下一轮自由交流欢迎来找我。」转行和应届的朋友，中间一句可以换成「我正在学习或尝试＿＿，想请教＿＿」。说自己愿意公开的内容，留一个具体的记忆点就好。\n另外，每一批自介都藏了一个小彩蛋玩法，名牌和签到台的海报上都印着，轮到哪一批我再说。' },
       { k: 'say', label: '⑥ 几件小事（约 1 分钟）', t: '几件小事：洗手间在 {toilet}；Wi-Fi 是 {wifi}；茶点在 {snackSpot}，第一轮交流就开放。名牌上有大家的方向和想聊的话题——交流时看名牌找人，是最快的破冰。现场会拍一些照片，个人近景或者要公开使用的，我们会先征得您本人同意。活动结束后有自愿参加的晚餐，还没登记的朋友交流时间找 {B}。' },
       { k: 'say', at: '13:08', cue: '该请雨哥了', label: '⑦ 请雨哥（约 30 秒）', t: '好，下面有请今天沙龙的发起人——雨哥。{yuBio}。今天雨哥分享 40 分钟，包括问答。掌声欢迎！' },
       { k: 'tip', t: '开场必须 13:10 前交给雨哥。时间紧：② 改举手版（1 分钟）、砍掉 ④；①③⑦ 一定要讲。' },
     ],
     B: [
-      { k: 'do', t: '站队时帮着引导：指一指区域纸在哪，把犹豫的人带过去；结束后招呼大家回座。' },
+      { k: 'do', t: '站队时帮着引导：指一指区域牌在哪，把犹豫的人带过去；结束后招呼大家回座。' },
       { k: 'do', t: '示范音乐时，如果约定由你放，就配合按播放。' },
       { k: 'do', t: '确认雨哥的电脑 / 投屏 / 翻页笔已就位。' },
     ],
@@ -499,7 +582,7 @@ const PREP = [
     ['A', 'a4', '熟读主持稿，在要现场即兴的地方心里有数（雨哥 / 嘉宾收尾时「记一句」、交流时点出的共同话题）'],
     ['A', 'a5', '准备计时和提示牌：这个 App 的计时页 + 提示牌（还剩 3 分钟 / 还剩 2 分钟 / 还剩 5 秒 / 时间到 / 请回座）；想要纸牌就打印一套备用'],
     ['A', 'a6', '选一段回座音乐（30 秒内能认出来、不吵），存在手机里'],
-    ['A', 'a17', '准备名牌（含少量空白备用）和粗头笔；用 A4 + 粗头笔写好出海地图的 5 张区域纸'],
+    ['A', 'a17', '彩色打印「物料包.pdf」（封面写了每页印几份）：区域牌、玩法海报、自介台卡、按批次分色的名牌、提示牌、指路牌、签到表、主持口袋卡；名牌沿虚线剪好'],
     ['A', 'a16', '为四种彩蛋各想一句自己的示范（三个标签 / 两真一假 / 出海名场面 / Agent 许愿），填进「资料 → 信息 → 破冰」'],
     ['B', 'b1', '核实场地：地址、入场及布场时段、最晚撤场时间、场地联系人'],
     ['B', 'b2', '核实设备：投影接口（HDMI / Type-C）、话筒几只及电池、音响、插座、桌椅'],
@@ -515,7 +598,7 @@ const PREP = [
     ['A', 'a9', '跟每位嘉宾确认：自己几点开讲、20 分钟含问答、最后 2 分钟举牌；跟雨哥确认最后 3 分钟怎么提示'],
     ['A', 'a10', '把五批名单同步给 {B}（「资料 → 同步」发同步码），签到台上两人都能查谁在第几批'],
     ['A', 'a11', '定稿主持稿里的空：Wi-Fi、洗手间、茶点位置、召集位置、合影位置'],
-    ['A', 'a18', '打印「自介玩法海报」1–2 张（打印属于新增采购，先问雨哥）'],
+    ['A', 'a18', '打印属于新增采购，先跟雨哥说一声；宾果卡雨哥同意再印'],
     ['A', 'a12', '（可选）请雨哥在 PPT 里加一页「一分钟自介模板」，自介时投在屏幕上'],
     ['B', 'b6', '整理签到表（按姓名排好，留晚餐意向一栏）'],
     ['B', 'b7', '物料装袋：自己那一份（见「资料 → 物料」）'],
@@ -529,7 +612,7 @@ const PREP = [
     ['A', 'a13', '手机充满电 + 充电宝；App 打开能看到「现在」页'],
     ['A', 'a14', '提示牌（纸牌备用）、主持稿 PDF 存手机'],
     ['A', 'a19', '早上给三位嘉宾各发一条消息：几点开讲、地址、到了找谁'],
-    ['A', 'a20', '物料带齐：名牌、粗头笔、胶带、区域纸、玩法海报'],
+    ['A', 'a20', '物料带齐：名牌（按批次分好）、区域牌、海报、台卡、提示牌、指路牌、口袋卡、胶带、几支笔'],
     ['B', 'b11', '自己那份物料带齐，对着物料清单再点一次'],
     ['B', 'b12', '跟茶点供应方、场地联系人、餐厅各确认一次今天的时间'],
   ] },
@@ -537,8 +620,9 @@ const PREP = [
 
 const MATS = [
   ['A', '提示牌（手机全屏 + 纸牌备用）'], ['A', '计时手机（就是这个 App）'], ['A', '回座音乐 + 音频线 / 蓝牙（若用）'],
-  ['A', '名牌 + 少量空白备用'], ['A', '粗头笔（写名牌、区域纸）'], ['A', '胶带'],
-  ['A', '出海地图区域纸 5 张（A4 + 粗头笔写）'], ['A', '自介玩法海报（打印 1–2 张）'],
+  ['A', '名牌：按批次分 5 种颜色 + 1 页空白备用（物料包，剪好）'], ['A', '几支笔（大家自己写名牌）'], ['A', '胶带'],
+  ['A', '出海地图区域牌 6 张（物料包）'], ['A', '自介玩法海报 2 张 + 自介台卡 1 张（物料包）'],
+  ['A', '指路牌 5 张、主持口袋卡 1 张（物料包）'],
   ['B', '本手册（打印一份）'], ['B', '签到表'], ['B', '签到笔'], ['B', '充电线和适配器'], ['B', '话筒备用电池'],
   ['B', '纸巾、杯子、垃圾袋（先核对场地是否已备）'],
   ['AB', '充电宝（两人各一个）'],
@@ -564,12 +648,12 @@ const DISCUSS = [
 
 /* ---------- 互动和游戏的准备（都不占流程时间） ---------- */
 const GAMES = [
-  { t: '出海地图站队', when: '13:00 开场 ②（约 3 分钟）', prep: '{A} 提前用 A4 + 粗头笔写「东南亚 / 欧美 / 中东非洲 / 拉美 / 还在找方向」，布场时按 {mapLayout} 贴好。大家起立走到自己的市场，和身边人握手报名字 + 一个城市，主持每区采访一位。人多挪不动就改举手版。', who: 'A' },
+  { t: '出海地图站队', when: '13:00 开场 ②（约 3 分钟）', prep: '6 张区域牌在物料包里印好了（东南亚 / 欧美 / 中东非洲 / 拉美 / 日韩南亚澳新 / 还在找方向），布场时按 {mapLayout} 贴好。大家起立走到自己的市场，和身边人握手报名字 + 一个城市，主持每区采访一位。人多挪不动就改举手版。', who: 'A' },
   { t: '回座音乐信号', when: '开场 ④ 示范一次，之后每次回座提醒时放', prep: '选一段 30 秒内能认出来的音乐；布场时连音响试放；手机音量提前调好。', who: 'A' },
-  { t: '名牌三格', when: '签到时', prep: '名牌上留三格：称呼 / 方向 / 想聊的话题，本人选填。粗头笔写得大一点，交流时远远就能看到。签到时 {A} 发名牌、引导填写。', who: 'A' },
+  { t: '名牌三格', when: '签到时', prep: '名牌按批次分 5 种颜色，印好了第几批和这批的彩蛋；本人只写三格：称呼 / 方向 / 想聊的话题。签到时 {A} 按批次发、引导填写。', who: 'A' },
   { t: '猜拳夸夸', when: '13:50 第①批自介前（约 1 分钟）', prep: '不用道具。刚听完 40 分钟分享，全体起立和邻座猜拳，输的人夸赢的人一句。第①批 10 人时跳过。', who: 'A' },
   { t: '五批自介彩蛋', when: '每批自介开始时宣布 + 主持先示范', prep: '① 三个标签 ② 两真一假 ③ 出海名场面 ④ Agent 许愿 ⑤ 接力回应。都在 1 分钟之内，不加时。{A} 提前想好自己的示范句；签到时 {A} 发名牌时顺口告诉每人「你在第几批、彩蛋是什么」。', who: 'A' },
-  { t: '自介玩法海报', when: '签到台 / 投影', prep: '打印「自介玩法海报.pdf」贴签到台，或请雨哥放进 PPT。', who: 'A' },
+  { t: '自介玩法海报', when: '签到台 / 投影', prep: '物料包里的海报印 2 张：签到台一张、话筒位一张；也可以请雨哥放进 PPT。', who: 'A' },
   { t: '记忆快问', when: '每批讲完、时间有余时（约 30 秒）', prep: '{A} 在计时页给每人「记一笔」关键词，讲完挑 2–3 个问全场：「刚才是谁说……？」', who: 'A' },
   { t: '每轮交流小任务', when: '每批自介讲完、宣布交流时，一句话布置', prep: '不用道具，和彩蛋接上：认识两位新朋友 → 去核对「两真一假」→ 问一个 AI 用法 → 找愿望相似的人 → 加微信约一件事。', who: 'A' },
   { t: '人脉宾果卡（可选）', when: '签到时发，五轮交流里玩', prep: '打印约 50 张（文件夹里有可打印版，一张 A4 两张卡）。规则：找到符合格子的人请 TA 签名，一人只签一格；连成一条线就找 {B} 登记，合影时站前排。打印属于新增采购，先问雨哥。', who: 'B' },
@@ -1160,8 +1244,91 @@ function printDoc(kind) {
   $('#main').innerHTML = h;
 }
 
+
+/* ---------- 物料包（彩色打印，生成 物料包.pdf） ---------- */
+function kitDoc() {
+  document.body.classList.add('kit'); $('#nav').remove(); $('#top').remove();
+  const E = esc, EV = EVENT.title + ' · 11.7';
+  const pages = [], add = (o, sec, html) => pages.push({ o, sec, html });
+  const foot = t => '<div class="k-foot">' + E(t) + '</div>';
+
+  // 1) 出海地图区域牌
+  REGIONS.forEach(r => add('l', 'region', '<div class="k-region" style="--c:' + r.c + '"><div class="tag">出海地图 · 站到你正在做 / 最想做的市场</div><div class="big' + (r.t.length > 5 ? ' long' : '') + '">' + E(r.t) + '</div><div class="sub">' + E(r.sub) + '</div><div class="bot">' + E(EV) + '</div></div>'));
+
+  // 2) 自介玩法海报（彩色）
+  add('p', 'poster', '<div class="k-poster"><div style="text-align:center"><div class="k-h1" style="font-size:30pt">一分钟自介 · 每批一个彩蛋</div><div class="k-sub" style="font-size:12pt">' + E(EVENT.title) + ' · 看看名牌，你在第几批？</div></div>' +
+    '<div class="k-note" style="font-size:12pt;margin:6mm 0 4mm"><b>自介模板：</b>' + E(INTRO_TPL) + '<br><span style="color:#555">' + E(INTRO_TPL2) + '</span></div>' +
+    [1, 2, 3, 4, 5].map(n => { const seg = SEG.find(x => x.id === 'batch' + n); return '<div style="display:flex;gap:5mm;align-items:center;border-radius:4mm;padding:4mm 5mm;margin:3.2mm 0;background:' + BATCH_COLOR[n] + '14;border-left:3mm solid ' + BATCH_COLOR[n] + '"><div style="font-size:34pt;font-weight:900;line-height:1;color:' + BATCH_COLOR[n] + '">' + BATCH_LABEL[n] + '</div><div><div style="font-size:17pt;font-weight:900;color:' + BATCH_COLOR[n] + '">「' + E(ICE[n].name) + '」<span style="font-size:11pt;color:#777;font-weight:600;margin-left:3mm">' + seg.t0 + ' 开始</span></div><div style="font-size:12pt;margin-top:1mm">' + E(ICE[n].rule) + '</div></div></div>'; }).join('') +
+    '<div style="text-align:center;font-size:11pt;color:#555;margin-top:4mm">想不出来也没关系，正常自介就很好 · 每人 1 分钟，55 秒会有提示</div></div>');
+
+  // 3) 自介台卡（对折立在话筒位）
+  const tent = '<h2>一分钟自介</h2><p>大家好，我是＿＿，目前在做＿＿／准备转向＿＿。<br>我有＿＿方面的经验或技能；今天想交流＿＿，<br>下一轮自由交流欢迎来找我。</p><div class="s">转行 / 应届：中间换成「我正在学习或尝试＿＿，想请教＿＿」 · 别忘了你这批的彩蛋（看名牌）</div>';
+  add('l', 'tent', '<div class="k-tent"><div class="half top">' + tent + '</div><div class="fold"><span>沿虚线对折，立在话筒旁</span></div><div class="half bot">' + tent + '</div></div>');
+
+  // 4) 名牌：每批一种颜色，一页 10 张（9 × 5.4 cm，名片卡套尺寸）
+  [1, 2, 3, 4, 5, 0].forEach(n => {
+    const c = BATCH_COLOR[n], seg = n ? SEG.find(x => x.id === 'batch' + n) : null;
+    const one = '<div class="k-tag" style="--c:' + c + '"><div class="tb"><b>' + (n ? BATCH_LABEL[n] : '＿') + '</b><span>' + (n ? '第' + BATCH_LABEL[n] + '批' : '第＿批') + '</span></div><div class="body"><div class="ev"><span>' + E(EVENT.title) + '</span><span>11.7 深圳</span></div>' +
+      '<div class="egg">' + (n ? '本批彩蛋「' + E(ICE[n].name) + '」· ' + seg.t0 + ' 自介' : '彩蛋看签到台海报') + '</div><div class="ln name">称呼</div><div class="ln">方向</div><div class="ln">想聊的话题</div></div></div>';
+    add('p', 'tags', '<div style="position:absolute;top:5mm;left:15mm;right:15mm;display:flex;justify-content:space-between;font-size:9pt;color:#6b7080"><b style="color:' + c + '">' + (n ? '第' + BATCH_LABEL[n] + '批名牌 × 10' : '空白备用名牌 × 10（临时加入的人，批次手写）') + '</b><span>沿虚线剪开 · 9 × 5.4 cm，正好放进名片卡套，没有就用胶带贴</span></div><div class="k-tags">' + one.repeat(10) + '</div>');
+  });
+
+  // 5) 提示牌
+  const SC = { warn: '#E39B00', bad: '#D23A3A', info: '#2F5FD0' };
+  const SSUB = { '还剩 3 分钟': '雨哥最后 3 分钟', '还剩 2 分钟': '嘉宾最后 2 分钟', '还剩 5 秒': '自介 55 秒', '时间到': '', '请回座': '下一段马上开始', '最后一个问题': '其他问题留到交流时间', '下一位准备': '', '请大声一点': '后排听不清' };
+  SIGNS.filter(x => x.t !== '谢谢！').forEach(x => add('l', 'signs', '<div class="k-sign" style="--c:' + SC[x.c] + '"><div class="big' + (x.t.replace(/\s/g, '').length > 4 ? ' mid' : '') + '">' + E(x.t) + '</div>' + (SSUB[x.t] ? '<div class="sub">' + E(SSUB[x.t]) + '</div>' : '') + '</div>'));
+
+  // 6) 指路牌
+  [['签到处', '签到 · 领名牌 · 看看你在第几批'], ['茶点区', '水和茶点 · 请随意'], ['合影区', '18:45 大合影 · 自愿参加'], ['晚餐集合点', '18:55 结束后在这里集合 · 跟 ' + S.names.B + ' 一起出发'], ['→', '海外销售 Agent 沙龙 · 这边走']].forEach(w =>
+    add('l', 'way', '<div class="k-way"><div class="ev">' + E(EVENT.title) + '</div><div class="big"' + (w[0] === '→' ? ' style="font-size:230pt;line-height:.9"' : '') + '>' + E(w[0]) + '</div><div class="sub">' + E(w[1]) + '</div></div>'));
+
+  // 7) 签到表（打勾要手写）
+  [0, 1].forEach(pg => add('p', 'sheet', '<div class="k-head"><div style="display:flex;justify-content:space-between;align-items:baseline"><div class="k-h1" style="font-size:18pt">签到表 · ' + E(EVENT.title) + '</div><span class="k-sub">11/7 · 第 ' + (pg + 1) + ' / 2 页</span></div>' +
+    '<div class="k-sub">批次写 ①–⑤，其余打 ✓ · 报名 / 付款对不上的写在备注，交雨哥</div><table class="k-sheet"><tr><th style="width:9mm">#</th><th>称呼</th><th style="width:14mm">批次</th><th style="width:16mm">名牌</th><th style="width:16mm">晚餐</th><th style="width:20mm">报名/付款</th><th style="width:34mm">备注</th></tr>' +
+    Array.from({ length: 25 }, (_, i) => '<tr><td class="n">' + (pg * 25 + i + 1) + '</td><td></td><td></td><td class="c">☐</td><td class="c">☐</td><td class="c">☐</td><td></td></tr>').join('') +
+    '</table><div style="margin-top:3mm;font-size:10.5pt">本页合计：签到 ＿＿＿ 人 · 晚餐 ＿＿＿ 人</div></div>'));
+
+  // 8) 主持口袋卡（剪成 4 张，手机没电时用）
+  const tl = [['13:00', '开场 · ② 出海地图站队 · 13:08 请雨哥'], ['13:10', '雨哥 40′ · 13:47 举「3 分钟」'], ['13:50', '第①批「三个标签」· 先猜拳夸夸'], ['14:32', '回座提醒'], ['14:35', '嘉宾一 20′ · 14:53 举「2 分钟」'], ['14:55', '第②批「两真一假」'], ['15:37', '回座提醒'], ['15:40', '嘉宾二 · 15:58 举牌'], ['16:00', '第③批「出海名场面」'], ['16:42', '回座提醒'], ['16:45', '嘉宾三 · 17:03 举牌'], ['17:05', '第④批「Agent 许愿」'], ['17:47', '回座提醒'], ['17:50', '第⑤批「接力回应」'], ['18:45', '自愿合影（喊「出海」）'], ['18:52', '集合提醒'], ['18:55', '结束说明 + 晚餐']];
+  const q = (lab, t) => '<div class="q"><i>' + E(lab) + '</i>' + T_(t) + '</div>';
+  add('p', 'pocket', '<div class="k-pocket">' +
+    '<div class="k-pc"><h3>① 时间线</h3>' + tl.map(r => '<div class="r"><b>' + r[0] + '</b><span>' + E(r[1]) + '</span></div>').join('') + '<div style="margin-top:2mm;color:#777">自介每人 1′：55 秒提示，60 秒接话</div></div>' +
+    '<div class="k-pc"><h3>② 五批彩蛋 · 交流小任务</h3>' + [1, 2, 3, 4, 5].map(n => '<div style="margin:1.3mm 0"><b style="color:' + BATCH_COLOR[n] + '">' + BATCH_LABEL[n] + '「' + E(ICE[n].name) + '」</b>' + E(ICE[n].rule.split('。')[0].replace(/([^？！])$/, '$1。')) + '<br><span style="color:#555">交流：' + E(TASKS[n]) + '</span></div>').join('') + '</div>' +
+    '<div class="k-pc"><h3>③ 常用的几句话</h3>' + q('回座提醒', RECALL) + q('到时接话', NEXT_LINE.replace('{next}', '＿＿')) + q('记忆快问', QUIZ) + q('问答冷场', '我先抛砖一个：您刚才讲的【某一点】，如果是刚入行的新人，第一步应该做什么？') + q('问答收不住', '最后一个问题，其他的留到交流时间。') + q('不想玩彩蛋', '没关系，彩蛋是加分题，正常介绍就很好！') + '</div>' +
+    '<div class="k-pc"><h3>④ 突发情况</h3>' + q('设备故障', EMG.find(e => e.t.startsWith('话筒')).say) + q('嘉宾迟到', '下一位嘉宾正在路上，我们把交流时间延长几分钟，到点我会提醒大家。') + '<div style="color:#555;margin:-.5mm 0 1mm">先和雨哥确认；保住每人 1 分钟和嘉宾时长，压后面的交流段。</div>' +
+      q('叫到的人不在', '＿＿ 可能暂时不在，我们先请下一位，TA 回来后再补上。') + q('站队乱 / 挪不动', '大家原地不动也行，我们改成举手——在做东南亚的朋友请举手！') + q('有人争执或不适', '我们稍微暂停一下，大家先和邻座聊几句，马上继续。（通知雨哥）') +
+      '<div style="margin-top:2mm">' + E(S.names.B) + ' 电话：＿＿＿＿＿＿　场地联系人：＿＿＿＿＿＿</div></div>' +
+    '</div><div style="position:absolute;top:2mm;left:0;right:0;text-align:center;font-size:7.5pt;color:#9aa0b0">主持口袋卡 · 沿虚线剪成 4 张（A6）· 手机没电时用</div>');
+
+  // 9) 宾果卡（可选）
+  const bcard = '<div class="card"><div class="hd"><b>人脉宾果 · ' + E(EVENT.title) + '</b><span style="font-size:9pt">我的称呼：＿＿＿＿＿＿</span></div><div class="rule">交流时间里，找到符合格子的人，请 TA 在格子里签名（一人只签一格）。连成一条线（横 / 竖 / 斜）就去找 ' + E(S.names.B) + ' 登记，合影时站前排！</div><div class="grid">' + BINGO.map(b => '<div>' + E(b) + '<span>签名：</span></div>').join('') + '</div></div>';
+  add('p', 'bingo', '<div class="k-bingo">' + bcard + '<div style="border-top:.3mm dashed #b9bdc8;margin:0 0 5mm"></div>' + bcard + '</div>');
+
+  // 封面
+  const META = [
+    ['region', '出海地图区域牌（6 张）', '各 1 份', '13:00 开场站队，布场时按方位贴墙'],
+    ['poster', '自介玩法海报', '2 份', '签到台一张、话筒位一张'],
+    ['tent', '一分钟自介台卡', '1 份', '沿虚线对折，立在话筒旁'],
+    ['tags', '名牌：①–⑤ 批各一种颜色 + 1 页空白', '各 1 份（共 60 张）', '剪开后按批次分好；签到时按批次发。人数超过 50 就多印空白页'],
+    ['signs', '提示牌（8 张）', '各 1 份', '举给讲者看：3 分钟 / 2 分钟 / 5 秒 / 时间到 / 回座等（手机提示牌的纸质备份）'],
+    ['way', '指路牌（签到处 / 茶点区 / 合影区 / 晚餐集合点 / 箭头）', '各 1 份，箭头 2 份', '箭头那张可以转着贴，指向会场'],
+    ['sheet', '签到表（50 行）', '1 份', '签到台用：批次、名牌、晚餐、付款打勾'],
+    ['pocket', '主持口袋卡（剪成 4 张）', '1 份', '手机没电时的备份'],
+    ['bingo', '人脉宾果卡（一页两张）', '25 份（可选）', '雨哥同意再印；签到时发'],
+  ];
+  const range = sec => { const idx = pages.map((p, i) => p.sec === sec ? i + 2 : 0).filter(Boolean); return idx.length > 1 ? idx[0] + '–' + idx[idx.length - 1] : String(idx[0]); };
+  const cover = '<div class="k-head"><div class="k-h1">沙龙物料包 · 彩色打印版</div><div class="k-sub">' + E(EVENT.title) + ' · 2026 年 11 月 7 日 周六 · 深圳 · 共 ' + (pages.length + 1) + ' 页</div>' +
+    '<div class="k-note"><b>打印设置：</b>A4 · <b>彩色</b> · 单面 · 缩放选<b>「实际大小 / 100%」</b>（不要选「适合页面」，否则名牌尺寸会变）。横版页面打印机会自动转向。<br><b>封面这页不用印。</b>需要剪的：名牌、主持口袋卡，沿虚线剪。</div>' +
+    '<table class="k-tbl"><tr><th style="width:15mm">页码</th><th>物料</th><th style="width:30mm">印几份</th><th>用在哪</th></tr>' + META.map(m => '<tr><td><b>' + range(m[0]) + '</b></td><td><b>' + E(m[1]) + '</b></td><td>' + E(m[2]) + '</td><td>' + E(m[3]) + '</td></tr>').join('') + '</table>' +
+    '<div class="k-note" style="background:#e3f3ef"><b style="color:#11806f">只有这几处要手写：</b>名牌上本人写称呼 / 方向 / 想聊的话题；签到表打勾；宾果卡互相签名；口袋卡上 ' + E(S.names.B) + ' 和场地联系人的电话。</div>' +
+    '<div class="k-note" style="background:#f3efe5"><b style="color:#1d2333">还要带：</b>胶带（贴区域牌、指路牌、海报）、几支笔（大家写名牌）、名片卡套（可选，有的话名牌直接插进去）。打印属于新增采购，先跟雨哥说一声。</div>' +
+    '<div class="k-sub" style="margin-top:5mm">拿到参加者名单后，可以把名字和批次直接印在名牌和签到表上：把手卡 App「资料 → 同步」的同步码发给 Claude 即可。</div></div>';
+  $('#main').innerHTML = '<div class="kp">' + cover + '</div>' + pages.map(p => '<div class="' + (p.o === 'l' ? 'kl' : 'kp') + '">' + p.html + '</div>').join('');
+}
+
 /* ---------- 启动 ---------- */
-if (PRINT) printDoc(PRINT);
+if (PRINT === 'kit') kitDoc();
+else if (PRINT) printDoc(PRINT);
 else { render(); keepAwake(); setInterval(tick, 250); if (S.T && S.T.run) tSub = 'timer'; }
 if (!PRINT && 'serviceWorker' in navigator && location.protocol === 'https:') { navigator.serviceWorker.register('sw.js').catch(() => {}); }
 
